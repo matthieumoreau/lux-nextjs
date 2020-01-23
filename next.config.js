@@ -4,7 +4,9 @@ require("dotenv").config();
 const path = require("path");
 const Dotenv = require("dotenv-webpack");
 
-module.exports = {
+const withLess = require("@zeit/next-less");
+
+module.exports = withLess({
   distDir: ".build",
   pageExtensions: ["page.tsx"],
 
@@ -22,4 +24,4 @@ module.exports = {
 
     return config;
   }
-};
+});
