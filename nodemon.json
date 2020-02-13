@@ -1,0 +1,10 @@
+{
+    "restartable": "rs",
+    "verbose": true,
+    "exec": "ts-node --project tsconfig.server.json server/index.ts",
+    "watch": [
+        "server",
+        "public"
+    ],
+    "ext": "js,ts"
+}

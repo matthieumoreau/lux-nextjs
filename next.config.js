@@ -1,14 +1,14 @@
 // next.config.js
-require("dotenv").config();
+require('dotenv').config();
 
-const path = require("path");
-const Dotenv = require("dotenv-webpack");
+const path = require('path');
+const Dotenv = require('dotenv-webpack');
 
-const withLess = require("@zeit/next-less");
+const withLess = require('@zeit/next-less');
 
 module.exports = withLess({
-  distDir: ".build",
-  pageExtensions: ["page.tsx"],
+  distDir: '.build/client',
+  pageExtensions: ['page.tsx'],
 
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     config.plugins = [
@@ -16,7 +16,7 @@ module.exports = withLess({
 
       // Read the .env file
       new Dotenv({
-        path: path.join(__dirname, ".env"),
+        path: path.join(__dirname, '.env'),
         safe: true,
         systemvars: true
       })
