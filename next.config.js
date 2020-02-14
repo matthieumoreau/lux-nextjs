@@ -18,10 +18,10 @@ module.exports = withLess({
       new Dotenv({
         path: path.join(__dirname, '.env'),
         safe: true,
-        systemvars: true
-      })
+        systemvars: true,
+      }),
     ];
 
     return config;
-  }
+  },
 });

@@ -1,6 +1,6 @@
-import { NextPage } from "next";
+import { NextPage } from 'next';
 
-import "../styles/index.less";
+import '../styles/index.less';
 interface Props {
   userAgent?: string;
 }
@@ -13,7 +13,7 @@ const Page: NextPage<Props> = ({ userAgent }) => (
 );
 
 Page.getInitialProps = async ({ req }) => {
-  const userAgent = req ? req.headers["user-agent"] : navigator.userAgent;
+  const userAgent = req ? req.headers['user-agent'] : navigator.userAgent;
   return { userAgent };
 };
 
