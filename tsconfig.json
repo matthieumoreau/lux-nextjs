@@ -15,7 +15,9 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@i18n": ["server/config/i18n/index.js"]
+      "@i18n": ["server/config/i18n/index.js"],
+      "@components/*": ["src/components/*"],
+      "@store/*": ["src/store/*"]
     }
   },
   "exclude": ["node_modules", ".build", ".next", "server"],
