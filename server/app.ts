@@ -1,8 +1,8 @@
 import next from 'next';
 
 const app = next({
-    dev: process.env.NODE_ENV === 'development',
-    quiet: process.env.NODE_ENV !== 'development'
+  dev: process.env.NODE_ENV !== 'production',
+  quiet: process.env.NODE_ENV !== 'development',
 });
 
 export default app;

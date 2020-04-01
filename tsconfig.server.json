@@ -8,5 +8,5 @@
     "noEmit": false
   },
   "exclude": ["node_modules", ".build", ".next"],
-  "include": ["server/**/*.ts"]
+  "include": ["interfaces/*.d.ts", "server/**/*.ts"]
 }

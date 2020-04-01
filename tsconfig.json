@@ -12,8 +12,12 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@i18n": ["server/config/i18n/index.js"]
+    }
   },
   "exclude": ["node_modules", ".build", ".next", "server"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "include": ["next-env.d.ts", "interfaces/*.d.ts", "**/*.ts", "**/*.tsx"]
 }

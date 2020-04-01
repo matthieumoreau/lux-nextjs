@@ -9,6 +9,9 @@ const withLess = require('@zeit/next-less');
 module.exports = withLess({
   distDir: '.build/client',
   pageExtensions: ['page.tsx'],
+  experimental: {
+    jsconfigPaths: true, // enables it for both jsconfig.json and tsconfig.json
+  },
 
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     config.plugins = [
