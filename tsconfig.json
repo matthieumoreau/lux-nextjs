@@ -17,7 +17,8 @@
     "paths": {
       "@i18n": ["server/config/i18n/index.js"],
       "@components/*": ["src/components/*"],
-      "@store/*": ["src/store/*"]
+      "@store/*": ["src/store/*"],
+      "@utils/*": ["utils/*"]
     }
   },
   "exclude": ["node_modules", ".build", ".next", "server"],

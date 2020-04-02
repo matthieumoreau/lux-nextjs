@@ -5,26 +5,22 @@ type LangSwitchProps = {
   url: any;
 };
 
-const LangSwitch: React.FunctionComponent<LangSwitchProps> = ({
-  url,
-  ...props
-}) => {
-  const { asPath, query, pathname } = url;
+const LangSwitch: React.FunctionComponent<LangSwitchProps> = ({ url }) => {
+  const { query, pathname } = url;
   return (
     <>
       {process.env.LOCALES.split(',').map((locale, index) => (
-        <>
-          <Link
-            key={index}
-            locale={locale}
-            href={asPath}
-            url={{
-              pathname,
-              query,
-            }}>
-            {locale}
-          </Link>{' '}
-        </>
+        <Link
+          as="button"
+          key={index}
+          locale={locale}
+          href={`/${locale}`}
+          url={{
+            pathname,
+            query,
+          }}>
+          {locale}
+        </Link>
       ))}
     </>
   );

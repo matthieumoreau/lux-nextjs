@@ -11,7 +11,7 @@ let defaultLanguage, otherLanguages;
 export const common = {
   defaultLanguage,
   otherLanguages,
-  fallbackLng: ['en'],
+  fallbackLng: 'fr',
   load: 'languageOnly',
   lowerCaseLng: true,
   ns: ['common'],
@@ -20,15 +20,21 @@ export const common = {
   preload: [...languages],
   strictMode: false,
   shallowRender: true,
+  // localeSubpaths: languages.reduce((obj, item) => {
+  //   return {
+  //     ...obj,
+  //     [item]: item,
+  //   };
+  // }, {}),
 };
 
 export const detection = {
-  order: ['path', 'cookie'],
+  order: ['path'],
   lookupQuerystring: 'locale',
   lookupCookie: 'locale',
   lookupFromPathIndex: 0,
   locales: languages,
-  caches: ['cookie'],
+  // caches: ['cookie'],
 };
 
 export const backend = {

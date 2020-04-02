@@ -12,7 +12,7 @@ import './home.styles.less';
 interface Props {
   userAgent?: string;
   currentLanguage?: string;
-  url?: any;
+  pagePath?: any;
 }
 
 const Title = styled.h1`
@@ -20,12 +20,12 @@ const Title = styled.h1`
   font-size: 50px;
 `;
 
-const Page: NextPage<Props> = ({ userAgent, currentLanguage, url }) => {
+const Page: NextPage<Props> = ({ userAgent, currentLanguage, pagePath }) => {
   const { t } = useTranslation();
 
   return (
     <>
-      <LangSwitch url={url} />
+      <LangSwitch url={pagePath} />
       <Title>{t('hello')} - Homepage with styled-component!</Title>
       <div className="title">{t('hello')} - Homepage with Less style!</div>
 
@@ -42,16 +42,15 @@ Page.getInitialProps = async (ctx: NextPageContext) => {
   const userAgent = req ? req.headers['user-agent'] : navigator.userAgent;
   const currentLanguage = req ? req.language : i18n.language;
 
-  const url = {
+  const pagePath = {
     pathname,
     query,
-    asPath,
   };
   return {
     namespacesRequired: ['common'],
     userAgent,
     currentLanguage,
-    url,
+    pagePath,
   };
 };
 
