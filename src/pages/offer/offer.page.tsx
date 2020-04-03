@@ -3,46 +3,33 @@ import styled from 'styled-components';
 import { Link, i18n } from '@i18n';
 import { useTranslation } from 'react-i18next';
 
-interface Props {
-  userAgent?: string;
-  currentLanguage?: string;
-}
+import LangSwitch from '@components/molecules/LangSwitch/LangSwitch';
+import { useGlobalContext } from '@store/GlobalContext';
+
+interface Props {}
 
 const Title = styled.h1`
   color: red;
   font-size: 50px;
 `;
 
-const Page: NextPage<Props> = ({ userAgent, currentLanguage }) => {
+const Page: NextPage<Props> = () => {
+  const { currentLocale, device, url } = useGlobalContext();
   const { t } = useTranslation();
   return (
     <>
+      <LangSwitch />
       <Title>{t('offer')} - OfferPage with styled-component!</Title>
 
-      <main>Your user agent: {userAgent}</main>
-      <main>Your current language: {currentLanguage}</main>
-
-      <Link href={{ pathname: '/[id]', query: { locale: 'fr' } }} as="/fr">
-        <button>FR</button>
-      </Link>
-
-      <Link href={{ pathname: '/[id]', query: { locale: 'en' } }} as="/en">
-        <button>EN</button>
-      </Link>
+      <main>Your current locale: {currentLocale}</main>
+      <main>Your device: {device}</main>
     </>
   );
 };
 
 Page.getInitialProps = async (ctx: NextPageContext) => {
-  console.log('OFFER', ctx);
-  const { req } = ctx;
-  const userAgent = req ? req.headers['user-agent'] : navigator.userAgent;
-  const currentLanguage = req ? req.language : i18n.language;
-
   return {
     namespacesRequired: ['common'],
-    userAgent,
-    currentLanguage,
   };
 };
 

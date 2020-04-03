@@ -1,29 +1,22 @@
 import React from 'react';
 import App from 'next/app';
-import { appWithTranslation, i18n } from '@i18n';
+import { i18n, appWithTranslation } from '@i18n';
 import cookieManager from '@utils/cookieManager';
 import deviceManager from '@utils/deviceManager';
 import GlobalContext from '@store/GlobalContext';
 
-function MyApp({ Component, pageProps, router, locale, device, ...props }) {
-  console.log(router.pathname, router.query, router.asPath);
+function MyApp({ Component, pageProps, router, device, locale, ...props }) {
   return (
     <GlobalContext.Provider
       value={{
         currentLocale: locale,
-        locales: process.env.LOCALES,
+        locales: process.env.LOCALES.split(','),
         device,
-        domain: '',
+        domain: process.env.DOMAIN,
         url: {
           pathname: router.pathname,
           query: router.query,
           asPath: router.asPath,
-        },
-        seo: {
-          canonicalUrls: {
-            fr: '',
-            en: '',
-          },
         },
       }}>
       <Component {...pageProps} />
@@ -37,15 +30,25 @@ function MyApp({ Component, pageProps, router, locale, device, ...props }) {
 // be server-side rendered.
 
 MyApp.getInitialProps = async appContext => {
-  // console.log('appContext', appContext);
   const { ctx } = appContext;
-  const { req, query, pathname, asPath } = ctx;
+  const { req, query } = ctx;
+
+  const cookies = cookieManager.getAll(ctx);
+  const localeFromPath = req
+    ? req.originalUrl.match(
+        '/(' + process.env.LOCALES.replace(/,/g, '|') + ')(/|$)'
+      )
+    : null;
+
+  // Set locale query param by default
+  if (query && !query.locale)
+    query.locale = localeFromPath ? localeFromPath[1] : cookies.locale;
 
   const appProps = await App.getInitialProps(appContext);
 
   return {
     ...appProps,
-    locale: query.locale,
+    locale: req ? req.language : i18n.language,
     device: req
       ? deviceManager(req.headers['user-agent'] || req.headers['User-Agent'])
       : deviceManager(window.navigator.userAgent),

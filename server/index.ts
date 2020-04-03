@@ -2,9 +2,8 @@ import express from 'express';
 import nextI18NextMiddleware from 'next-i18next/middleware';
 
 import app from './app';
-import nextI18next from './config/i18n';
-
 import router from './routes';
+import nextI18next from './config/i18n';
 
 const port = parseInt(process.env.PORT || '3000', 10);
 const handle = app.getRequestHandler();

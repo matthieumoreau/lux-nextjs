@@ -2,36 +2,40 @@ import * as React from 'react';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { i18n } from '@i18n';
+import { useGlobalContext } from '@store/GlobalContext';
 
 const CustomLink = styled.a``;
 
 type LinkProps = {
   href: string;
-  url?: object;
+  url?: any;
   locale?: string;
   target?: string;
   as?: string;
+  isShallow?: boolean;
   children?: any;
 };
 
 const Link: React.FunctionComponent<LinkProps> = ({
   href,
-  url,
   locale,
   target,
-  as,
+  as = '',
   children,
+  isShallow = false,
   ...props
 }) => {
   const router = useRouter();
-  const domain = 'localhost';
-  const currentLocale = 'fr';
+  const { url, domain, currentLocale } = useGlobalContext();
 
   locale = locale || currentLocale;
+  if (url && url.query) url.query.locale = currentLocale;
 
   const handleClick = e => {
     e.preventDefault();
-    return i18n.changeLanguage(locale).then(() => router.push(url, href)); // as = href
+    return i18n
+      .changeLanguage(locale)
+      .then(() => router.push(url, href, { shallow: isShallow })); // as = href
   };
 
   let attrs: any = {
@@ -43,7 +47,10 @@ const Link: React.FunctionComponent<LinkProps> = ({
   };
 
   if (url) {
-    attrs = { ...attrs, onClick: handleClick };
+    attrs = {
+      ...attrs,
+      onClick: handleClick,
+    };
   }
 
   return (

@@ -1,9 +1,5 @@
 import MobileDetect from 'mobile-detect';
 
-/**
- * @description Module Cookies - Manage cookies front side
- * @module Cookies
- */
 const deviceManager = userAgent => {
   const mobileDetect = new MobileDetect(userAgent);
 
