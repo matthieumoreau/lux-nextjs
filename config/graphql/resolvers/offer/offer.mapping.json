@@ -1,0 +1,272 @@
+{
+  "AdId": "IdAnnonce",
+  "AdRef": "RefAnnonce",
+  "IsExclusive": "IsExclusif",
+  "CommercialOffer": {
+    "dataKeys": ["commercialOffer"]
+  },
+  "CreationDate": {
+    "dataKeys": ["creationDate"]
+  },
+  "FirstOnlineDate": {
+    "dataKeys": ["firstOnlineDate"]
+  },
+  "PropertyId": {
+    "dataKeys": ["idBien"]
+  },
+  "PropertyTypeId": {
+    "dataKeys": ["propertyTypeId"]
+  },
+  "TransactionTypeId": "IdTypeTransaction",
+  "Description": "Description",
+  "Price": {
+    "key": "Price",
+    "data": {
+      "Raw": "Price",
+      "Currency": {
+        "dataKeys": ["currency"]
+      },
+      "Alur": {
+        "key": "Alur",
+        "data": {
+          "AdditionalRent": {
+            "arrayKeys": ["Price", "AdditionalRent"]
+          },
+          "AgencyRentFees": {
+            "dataKeys": ["alur", "agencyRentFees"]
+          },
+          "HasLisPendens": {
+            "dataKeys": ["alur", "flagProcedure"]
+          },
+          "AnnualCosts": {
+            "dataKeys": ["alur", "annualCosts"]
+          },
+          "Charge": {
+            "arrayKeys": ["Price", "Charge"]
+          },
+          "ChargesRegulFrequency": {
+            "dataKeys": ["alur", "chargesRegulFrequency"]
+          },
+          "DueDateCharges": {
+            "dataKeys": ["alur", "dueDateCharges"]
+          },
+          "DueDateRent": {
+            "dataKeys": ["alur", "dueDateRent"]
+          },
+          "FeedInventoryFixtures": {
+            "arrayKeys": ["Price", "FeedInventoryFixtures"]
+          },
+          "FlagValuesFees": {
+            "dataKeys": ["alur", "flagValuesFees"]
+          },
+          "FrequencyCharges": {
+            "dataKeys": ["alur", "frequencyCharges"]
+          },
+          "FrequencyRent": {
+            "dataKeys": ["alur", "frequencyRent"]
+          },
+          "GuarantieDeposit": {
+            "arrayKeys": ["Price", "GuarantieDeposit"]
+          },
+          "HasSupplementPrice": {
+            "dataKeys": ["alur", "hasSupplementPrice"]
+          },
+          "SupplementPrice": {
+            "dataKeys": ["alur", "supplementPrice"]
+          },
+          "IdTypesFeesRental": {
+            "arrayKeys": ["Price", "IdTypesFeesRental"]
+          },
+          "IdTypesFeesSale": {
+            "arrayKeys": ["Price", "IdTypesFeesSale"]
+          },
+          "LotNumber": {
+            "dataKeys": ["alur", "lotNumber"]
+          },
+          "NumberLots": {
+            "dataKeys": ["alur", "lotNumberTotal"]
+          },
+          "PercentFees": {
+            "dataKeys": ["alur", "percentFees"]
+          },
+          "PercentFeesNetSeller": {
+            "dataKeys": ["alur", "percentFeesNetSeller"]
+          },
+          "PriceExludingFeesBorneByBuyer": {
+            "arrayKeys": ["Price", "PriceExludingFeesBorneByBuyer"]
+          },
+          "ValuesFees": {
+            "dataKeys": ["alur", "valuesFees"]
+          },
+          "TxtProcedure": {
+            "dataKeys": ["alur", "txtProcedure"]
+          }
+        }
+      }
+    }
+  },
+  "Address": {
+    "key": "Adresse",
+    "data": {
+      "Locality0": {
+        "dataKeys": ["locality0"]
+      },
+      "Locality1": {
+        "dataKeys": ["locality1"]
+      },
+      "Locality2": {
+        "dataKeys": ["locality2"]
+      }
+    }
+  },
+  "Properties": {
+    "key": "Properties",
+    "data": {
+      "BuildYear": "BuildYear",
+      "Fees": "Honoraires",
+      "Floor": "Floor",
+      "HasAirConditioned": {
+        "dataKeys": ["aircon"]
+      },
+      "IsTiledFloor": "IsTiledFloor",
+      "HasAlarm": "HasAlarm",
+      "HasBasement": {
+        "dataKeys": ["hasBasement"]
+      },
+      "HasCableTv": "HasCableTv",
+      "HasCaretaker": "HasCaretaker",
+      "HasCellar": {
+        "dataKeys": ["cellar"]
+      },
+      "HasChimney": "HasChimney",
+      "HasCondominiumSyndicate": "SyndicatCopropriete",
+      "HasEntryCode": "HasEntryCode",
+      "HasHandicapAccessibility": "HasHandicapAccess",
+      "HasIntercom": "HasIntercom",
+      "HasLift": "HasLift",
+      "HasParquet": "HasParquet",
+      "HasPool": "HasPool",
+      "HasSyndicatProcedure": "HasSyndicatProcedure",
+      "IsHighlighed": "IsHighlighed",
+      "EnvironmentId": null,
+      "HeatingKindId": {
+        "dataKeys": ["idNatureChauffage"]
+      },
+      "HeatingTypeId": {
+        "dataKeys": ["idTypeChauffage"]
+      },
+      "KitchenTypeId": "IdTypeKitchen",
+      "SituationTypeId": "IdTypeSituation",
+      "IsBuildable": {
+        "dataKeys": ["buildable"]
+      },
+      "IsCalm": "IsCalm",
+      "IsCondominium": "IsCopropriete",
+      "IsDuplex": "IsDuplex",
+      "IsFurnished": "IsFurnished",
+      "IsIsmh": "IsIsmh",
+      "IsRenovated": "IsRenovated",
+      "IsRecent": "IsRecent",
+      "IsToRenovate": "NeedRenovating",
+      "NbrBathRoom": "NbrBathRoom",
+      "NbrBedroom": "NbrBedroom",
+      "NbrBoxes": "NbrGarage",
+      "NbrCondominiumLot": "NbrLotsCopropriete",
+      "NbrFloor": "NbrFloor",
+      "NbrParking": "NbrParking",
+      "NbrRoom": "NbrRoom",
+      "NbrShowerRoom": "NbrShowerRoom",
+      "NbrToilets": "NbrToilets",
+      "NbrTennisFields": "NbrTennisField",
+      "Area": "Surface",
+      "PlotArea": "TotSurfacePlot",
+      "LivingRoomArea": null,
+      "LivingArea": {
+        "dataKeys": ["livingArea"]
+      },
+      "SyndicatProcedureDescription": "SyndicatProcedureDescription",
+      "HasTennisField": "HasTennis",
+      "IsSunny": "IsSunny",
+      "Exposure": "Exposure",
+      "IsHighlighted": {
+        "dataKeys": ["isHighlighted"]
+      },
+      "TypeYatch": "TypeYatch",
+      "NbrPassengers": "NbrPassengers",
+      "Size": "Size"
+    }
+  },
+  "DDT": {
+    "key": "Dpe",
+    "data": {
+      "DPE": {
+        "key": "Energy",
+        "data": {
+          "Class": "Class",
+          "Value": "Value"
+        }
+      },
+      "GES": {
+        "key": "GES",
+        "data": {
+          "Class": "Class",
+          "Value": "Value"
+        }
+      }
+    }
+  },
+  "Photos": {
+    "key": "Visuals",
+    "data": {
+      "Id": "Tag",
+      "Type": "TypeVisual",
+      "Order": "Order"
+    }
+  },
+  "PublicationId": "IdPublication",
+  "Agency": {
+    "key": "Agence",
+    "data": {
+      "AgencyId": "IdAgence",
+      "ThirdPartyId": "IdTiers",
+      "Name": "Name",
+      "Email": "Email",
+      "Siren": {
+        "dataKeys": ["agence", "siren"]
+      },
+      "Siret": {
+        "dataKeys": ["agence", "siren"]
+      },
+      "WebSiteUrl": {
+        "dataKeys": ["agence", "webSite"]
+      },
+      "PhoneNumber": "PhoneNumber",
+      "Logo": "TagLogo",
+      "PrestoId": {
+        "dataKeys": ["agence", "idPresto"]
+      },
+      "Address": {
+        "key": "Address",
+        "data": {
+          "Street": "Street",
+          "ZipCode": "ZipCode",
+          "Locality0": {
+            "dataKeys": ["agence", "locality0"]
+          },
+          "Locality1": {
+            "dataKeys": ["agence", "locality1"]
+          },
+          "Locality2": {
+            "dataKeys": ["agence", "locality2"]
+          }
+        }
+      },
+      "Scale": {
+        "dataKeys": ["agence", "scale"]
+      },
+      "ScaleUrl": {
+        "dataKeys": ["agence", "scaleUrl"]
+      }
+    }
+  }
+}

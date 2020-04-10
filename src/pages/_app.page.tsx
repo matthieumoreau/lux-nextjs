@@ -1,5 +1,6 @@
 import React from 'react';
 import App from 'next/app';
+
 import { i18n, appWithTranslation } from '@i18n';
 import cookieManager from '@utils/cookieManager';
 import deviceManager from '@utils/deviceManager';
