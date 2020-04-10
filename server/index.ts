@@ -1,30 +1,47 @@
 import express from 'express';
+import * as dotenv from 'dotenv';
 import nextI18NextMiddleware from 'next-i18next/middleware';
+import { ApolloServer } from 'apollo-server-express';
 
-import app from './app';
-import router from './routes';
+dotenv.config();
 import nextI18next from './config/i18n';
 
+import router from './routes';
+import nextApp from './next';
+import apolloConfig from './../config/graphql';
+
 const port = parseInt(process.env.PORT || '3000', 10);
-const handle = app.getRequestHandler();
+const handle = nextApp.getRequestHandler();
 
 (async () => {
-  await app.prepare();
-  const server = express();
+  await nextApp.prepare();
+  const app = express();
+
+  const server = new ApolloServer(apolloConfig);
+  server.applyMiddleware({ app });
 
   await nextI18next.initPromise;
-  server.use(nextI18NextMiddleware(nextI18next));
+  app.use(nextI18NextMiddleware(nextI18next));
 
-  router(server, app);
+  router(app, nextApp);
 
-  server.get('*', (req, res) => handle(req, res));
+  app.get('*', (req, res) => handle(req, res));
 
-  await server.listen(port);
-  console.log(
-    `Server started ➜ ${
-      process.env.NODE_ENV === 'development' && port
-        ? `http://localhost:${port}`
-        : process.env.APP_HOSTNAME
-    }`
-  );
+  try {
+    await app.listen(port);
+
+    console.log(
+      `⏩ Next server ready at ${
+        process.env.NODE_ENV === 'development' && port
+          ? `http://localhost:${port}`
+          : process.env.APP_HOSTNAME
+      }`
+    );
+
+    console.log(
+      `🚀 Apollo server ready at http://localhost:${port}${server.graphqlPath}`
+    );
+  } catch (err) {
+    console.error(err);
+  }
 })();

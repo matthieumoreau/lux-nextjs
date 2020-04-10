@@ -15,10 +15,12 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
+      "@interfaces/*": ["interfaces/*"],
       "@i18n": ["server/config/i18n/index.ts"],
       "@components/*": ["src/components/*"],
       "@store/*": ["src/store/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@config/*": ["config/*"]
     }
   },
   "exclude": ["node_modules", ".build", ".next", "server"],
