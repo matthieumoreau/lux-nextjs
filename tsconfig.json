@@ -15,6 +15,7 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
+      "@tests/*": ["tests/*"],
       "@interfaces/*": ["interfaces/*"],
       "@i18n": ["server/config/i18n/index.ts"],
       "@components/*": ["src/components/*"],

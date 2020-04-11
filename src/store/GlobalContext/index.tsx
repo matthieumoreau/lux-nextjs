@@ -7,7 +7,7 @@ type Url = {
   asPath?: string;
 };
 
-type GlobalContextProps = {
+export type GlobalContextProps = {
   currentLocale: string;
   locales: string[];
   device: 'mobile' | 'phone' | 'tablet' | 'desktop';
@@ -17,6 +17,6 @@ type GlobalContextProps = {
 
 const GlobalContext = createContext<GlobalContextProps>(null);
 
-export const useGlobalContext: any = () => useContext(GlobalContext);
+export const useGlobalContext = () => useContext(GlobalContext);
 
 export default GlobalContext;

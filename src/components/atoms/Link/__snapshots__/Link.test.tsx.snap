@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Link /> rendering renders correctly 1`] = `
+<a
+  className="sc-AxjAm StDqN"
+  href="https://www.google.com/"
+  onClick={[Function]}
+  target="_blank"
+/>
+`;

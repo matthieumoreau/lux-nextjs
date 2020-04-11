@@ -1,3 +1,4 @@
+import React from 'react';
 import { NextPage, NextPageContext } from 'next';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';

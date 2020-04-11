@@ -1,5 +1,5 @@
-import { NextPage, NextPageContext } from 'next';
 import React from 'react';
+import { NextPage, NextPageContext } from 'next';
 
 interface Props {
   statusCode?: number;
