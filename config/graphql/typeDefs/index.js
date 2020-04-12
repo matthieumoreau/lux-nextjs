@@ -44,12 +44,30 @@ const typeDefs = gql`
     Url: String
   }
 
+  type PropertyType {
+    Id: Int!
+    label: String
+    trackingLabel: String
+    translationKey: String
+  }
+
+  type TransactionType {
+    Id: Int!
+    label: String
+    trackingLabel: String
+    trackingId: String
+    trackingLevel2: String
+    translationKey: String
+  }
+
   type Offer {
     AdId: String!
     AdRef: Int!
     IsExclusive: Boolean
-    PropertyTypeId: Int!
-    TransactionTypeId: Int!
+
+    PropertyType: PropertyType
+    TransactionType: TransactionType
+
     PropertyId: Int
     Properties: Properties
     Photos: [Photo]
@@ -60,6 +78,11 @@ const typeDefs = gql`
     PublicationId: Int
     DDT: DDT
     CommercialOffer: Int
+  }
+
+  type Heating {
+    Id: Int!
+    translationKey: String
   }
 
   type Properties {
@@ -92,8 +115,8 @@ const typeDefs = gql`
     IsRecent: Boolean
     IsToRenovate: Boolean
     EnvironmentId: Int
-    HeatingKindId: Int
-    HeatingTypeId: Int
+    HeatingKind: Heating
+    HeatingType: Heating
     KitchenTypeId: Int
     NbrBathRoom: Int
     NbrBedroom: Int

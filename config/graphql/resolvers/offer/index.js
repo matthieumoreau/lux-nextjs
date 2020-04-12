@@ -1,6 +1,53 @@
 import SwaggerMapper from '../../../../server/mappers/swagger';
 import swaggerDataMapping from './offer.mapping';
 
+import {
+  transactionTypeDictionary,
+  propertyTypeDictionary,
+  heatingTypeDictionary,
+  heatingKindDictionary,
+} from '../../../dictionnary/offer';
+
+const extendOfferWithOfferDictionary = offer => {
+  if (offer.PropertyType) {
+    offer.PropertyType = {
+      ...offer.PropertyType,
+      ...(offer.PropertyType.Id in propertyTypeDictionary
+        ? propertyTypeDictionary[offer.PropertyType.Id]
+        : {}),
+    };
+  }
+
+  if (offer.TransactionType) {
+    offer.TransactionType = {
+      Id: offer.TransactionType,
+      ...(offer.TransactionType in transactionTypeDictionary
+        ? transactionTypeDictionary[offer.TransactionType]
+        : {}),
+    };
+  }
+
+  if (offer.HeatingKind) {
+    offer.HeatingKind = {
+      ...offer.HeatingKind,
+      ...(offer.HeatingKind.Id in heatingKindDictionary
+        ? heatingKindDictionary[offer.HeatingKind.Id]
+        : {}),
+    };
+  }
+
+  if (offer.HeatingType) {
+    offer.HeatingType = {
+      ...offer.HeatingType,
+      ...(offer.HeatingType.Id in heatingTypeDictionary
+        ? heatingTypeDictionary[offer.HeatingType.Id]
+        : {}),
+    };
+  }
+
+  return offer;
+};
+
 export default async (_source, { id }, { dataSources }) => {
   const data = await dataSources.bellesDemeuresEndPoint.getOffer(id);
 
@@ -32,5 +79,6 @@ export default async (_source, { id }, { dataSources }) => {
 
   offer.Agency.siren ? offer.Agency.Siren.substr(0, 9) : offer.Agency.Siren;
 
-  return offer;
+  // console.log(extendOfferWithOfferDictionary(offer));
+  return extendOfferWithOfferDictionary(offer);
 };

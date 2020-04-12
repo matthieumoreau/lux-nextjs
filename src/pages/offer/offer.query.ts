@@ -5,8 +5,20 @@ const OFFER_QUERY = gql`
     offer(id: $id) {
       offerId: AdId
       refId: AdRef
-      propertyTypeId: PropertyId
-      transactionTypeId: TransactionTypeId
+      propertyType: PropertyType {
+        id: Id
+        label
+        trackingLabel
+        translationKey
+      }
+      transactionType: TransactionType {
+        id: Id
+        label
+        trackingLabel
+        trackingId
+        trackingLevel2
+        translationKey
+      }
       description: Description
       photos: Photos {
         order: Order
@@ -46,8 +58,14 @@ const OFFER_QUERY = gql`
         isRecent: IsRecent
         isToRenovate: IsToRenovate
         environmentId: EnvironmentId
-        heatingKindId: HeatingKindId
-        heatingTypeId: HeatingTypeId
+        heatingKind: HeatingKind {
+          id: Id
+          translationKey
+        }
+        heatingType: HeatingType {
+          id: Id
+          translationKey
+        }
         kitchenTypeId: KitchenTypeId
         nbrBathRoom: NbrBathRoom
         nbrBedroom: NbrBedroom

@@ -14,10 +14,14 @@
   "PropertyId": {
     "dataKeys": ["idBien"]
   },
-  "PropertyTypeId": {
-    "dataKeys": ["propertyTypeId"]
+  "PropertyType": {
+    "data": {
+      "Id": {
+        "dataKeys": ["propertyTypeId"]
+      }
+    }
   },
-  "TransactionTypeId": "IdTypeTransaction",
+  "TransactionType": "IdTypeTransaction",
   "Description": "Description",
   "Price": {
     "key": "Price",
@@ -149,11 +153,19 @@
       "HasSyndicatProcedure": "HasSyndicatProcedure",
       "IsHighlighed": "IsHighlighed",
       "EnvironmentId": null,
-      "HeatingKindId": {
-        "dataKeys": ["idNatureChauffage"]
+      "HeatingKind": {
+        "data": {
+          "Id": {
+            "dataKeys": ["idNatureChauffage"]
+          }
+        }
       },
-      "HeatingTypeId": {
-        "dataKeys": ["idTypeChauffage"]
+      "HeatingType": {
+        "data": {
+          "Id": {
+            "dataKeys": ["idTypeChauffage"]
+          }
+        }
       },
       "KitchenTypeId": "IdTypeKitchen",
       "SituationTypeId": "IdTypeSituation",
