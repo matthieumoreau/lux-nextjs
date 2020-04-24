@@ -1,10 +1,11 @@
 import { createContext, useContext } from 'react';
 import { ParsedUrlQuery } from 'querystring';
 
-type Url = {
+type Ctx = {
   pathname: string;
   query: ParsedUrlQuery;
   asPath?: string;
+  path?: string;
 };
 
 export type GlobalContextProps = {
@@ -12,7 +13,8 @@ export type GlobalContextProps = {
   locales: string[];
   device: 'mobile' | 'phone' | 'tablet' | 'desktop';
   domain: string;
-  url: Url;
+  ctx: Ctx;
+  urls?: any;
 };
 
 const GlobalContext = createContext<GlobalContextProps>(null);

@@ -14,7 +14,7 @@ const mockUseGlobalContext = (props: GlobalContext.GlobalContextProps) => {
     locales: props.locales,
     device: props.device,
     domain: props.domain,
-    url: props.url,
+    ctx: props.ctx,
   }));
 };
 

@@ -1,63 +1,88 @@
 import * as React from 'react';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
+import NextLink, { LinkProps as NextLinkProps } from 'next/link';
+import urlManager from '@utils/urlManager';
 import { i18n } from '@i18n';
 import { useGlobalContext } from '@store/GlobalContext';
 
-const CustomLink = styled.a``;
-
-type LinkProps = {
-  href: string;
-  url?: any;
-  locale?: string;
-  target?: string;
-  as?: string;
-  isShallow?: boolean;
-  children?: any;
+const isString = (toBeDetermined: any): toBeDetermined is string => {
+  return true;
 };
 
-const Link: React.FunctionComponent<LinkProps> = ({
+type LinkProps = {
+  target?: string;
+  locale?: string;
+  data?: object;
+};
+
+const CustomLink = styled.a<LinkProps>``;
+
+const Link: React.FunctionComponent<LinkProps & NextLinkProps> = ({
   href,
   locale,
-  target,
-  as = '',
+  data = {},
   children,
-  isShallow = false,
+  target,
+  passHref = true,
   ...props
 }) => {
   const router = useRouter();
-  const { url, domain, currentLocale } = useGlobalContext();
+  const { domain, currentLocale } = useGlobalContext();
 
-  locale = locale || currentLocale;
-  if (url && url.query) url.query.locale = currentLocale;
+  /**
+   *
+   **/
+  const getLinkProps = (pathname, locale, data) => {
+    const ctx = urlManager.getPageUrl({ pathname }, locale, data);
 
-  const handleClick = e => {
-    e.preventDefault();
-    return i18n
-      .changeLanguage(locale)
-      .then(() => router.push(url, href, { shallow: isShallow })); // as = href
-  };
+    if (ctx === null) {
+      return {
+        href: pathname,
+      };
+    }
+    let { asPath, query } = ctx;
 
-  let attrs: any = {
-    as,
-    href,
-    target:
-      target ||
-      (href.startsWith('/') || href.includes(domain) ? '_self' : '_blank'),
-  };
-
-  if (url) {
-    attrs = {
-      ...attrs,
-      onClick: handleClick,
+    return {
+      href: {
+        pathname: ctx.pathname,
+        query: query || {},
+      },
+      as: asPath,
     };
-  }
+  };
 
-  return (
-    <CustomLink {...attrs} {...props}>
-      {children}
-    </CustomLink>
-  );
+  /**
+   * If query local is different of currentLocale, we change currentLocale
+   **/
+  const handleClick = (e, props) => {
+    const { href, as } = props;
+    if (typeof href === 'object' && href.query.locale !== currentLocale) {
+      e.preventDefault();
+      i18n.changeLanguage(href.query.locale).then(() => router.push(href, as));
+    }
+  };
+
+  if (isString(href)) {
+    if (href.startsWith('/') || href.includes(domain)) {
+      // Internal Link
+      const nextLinkprops = getLinkProps(href, locale || currentLocale, data);
+      return (
+        <NextLink {...nextLinkprops} {...props}>
+          <a onClick={e => handleClick(e, props)} target={'_self' || target}>
+            {children}
+          </a>
+        </NextLink>
+      );
+    } else {
+      // External Link
+      return (
+        <CustomLink href={href} target={'_blank' || target}>
+          {children}
+        </CustomLink>
+      );
+    }
+  }
 };
 
 export default Link;

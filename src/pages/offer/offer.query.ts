@@ -20,6 +20,19 @@ const OFFER_QUERY = gql`
         translationKey
       }
       description: Description
+      locality: Address {
+        locality0: Locality0 {
+          name
+          country
+        }
+        locality1: Locality1 {
+          name
+        }
+        locality2: Locality2 {
+          name
+          zip
+        }
+      }
       photos: Photos {
         order: Order
         type: Type

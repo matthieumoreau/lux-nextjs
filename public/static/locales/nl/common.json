@@ -1,1 +1,114 @@
-{ "hello": "Bonjour NL", "offer": "Annonce NL" }
+{
+  "hello": "Bonjour NL",
+  "offer": "Annonce NL",
+  "transactionType": {
+    "default": {
+      "label": "Default",
+      "slug": "default"
+    },
+    "sale": {
+      "label": "Verkoop",
+      "slug": "verkoop"
+    },
+    "rent": {
+      "label": "Seizoensverhuur",
+      "slug": "verhuur"
+    },
+    "longRent": {
+      "label": "Langdurige verhuur",
+      "slug": "verhuur-voor-lange-termijn"
+    }
+  },
+  "propertyType": {
+    "default": {
+      "label": "Prestige vastgoed",
+      "seo": "luxe prestige vastgoed",
+      "slug": "prestige-vastgoed"
+    },
+    "apartment": {
+      "label": "Ouder appartement",
+      "seo": "luxe appartement",
+      "slug": "appartement"
+    },
+    "newApartment": {
+      "label": "Nieuwbouw appartement",
+      "seo": "luxe nieuwbouw appartement",
+      "slug": "nieuwbouw-appartement"
+    },
+    "house": {
+      "label": "Huis",
+      "seo": "luxe huis",
+      "slug": "eigendom"
+    },
+    "villa": {
+      "label": "Villa",
+      "seo": "luxe villa",
+      "slug": "eigendom"
+    },
+    "property": {
+      "label": "Onroerend goed",
+      "seo": "luxe domein",
+      "slug": "eigendom"
+    },
+    "newHouse": {
+      "label": "Nieuwbouwwoning",
+      "seo": "luxe nieuwbouwwoning",
+      "slug": "eigendom"
+    },
+    "bastide": {
+      "label": "Bastide",
+      "seo": "luxe bastide",
+      "slug": "bastide"
+    },
+    "plotOfLand": {
+      "label": "Terrein",
+      "seo": "luxe terrein",
+      "slug": "grond"
+    },
+    "building": {
+      "label": "Pand",
+      "seo": "luxe pand",
+      "slug": "pand"
+    },
+    "loft": {
+      "label": "Loft",
+      "seo": "luxe loft",
+      "slug": "loft"
+    },
+    "chalet": {
+      "label": "Landhuis",
+      "seo": "luxe landhuis",
+      "slug": "chalet"
+    },
+    "castle": {
+      "label": "Kasteel",
+      "seo": "luxe kasteel",
+      "slug": "kasteel"
+    },
+    "castle/manor": {
+      "label": "Kasteel / Landhuis",
+      "seo": "luxe kasteel / landhuis",
+      "slug": "kasteel"
+    },
+    "farm": {
+      "label": "Boerderij",
+      "seo": "luxe boerderij",
+      "slug": "wijngaard"
+    },
+    "wineEstate": {
+      "label": "Wijngaard",
+      "seo": "luxe wijngaard",
+      "slug": "wijngaard"
+    },
+    "mansion": {
+      "label": "Herenhuis",
+      "seo": "luxe herenhuis",
+      "slug": "herenhuis"
+    },
+    "yacht": {
+      "label": "Jacht",
+      "seo": "luxe jacht",
+      "slug": "yacht"
+    }
+  }
+}

@@ -23,7 +23,7 @@ beforeEach(() => {
     locales: ['fr', 'en', 'it', 'de', 'nl', 'ru'],
     device: 'desktop',
     domain: 'http://localhost:3000/',
-    url: { query: {}, pathname: '/' },
+    ctx: { query: {}, pathname: '/' },
   });
 });
 

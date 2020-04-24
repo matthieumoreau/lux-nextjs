@@ -1,1 +1,114 @@
-{ "hello": "Привет", "offer": "Annonce RU" }
+{
+  "hello": "Привет",
+  "offer": "Annonce RU",
+  "transactionType": {
+    "default": {
+      "label": "Default",
+      "slug": "default"
+    },
+    "sale": {
+      "label": "Продажа",
+      "slug": "prodaja"
+    },
+    "rent": {
+      "label": "Сезонная аренда",
+      "slug": "arenda"
+    },
+    "longRent": {
+      "label": "Долгосрочная аренда",
+      "slug": "verhuur-voor-lange-termijn"
+    }
+  },
+  "propertyType": {
+    "default": {
+      "label": "Prestijnaya nedvijimost",
+      "seo": "Prestijnaya nedvijimost",
+      "slug": "prestijnaya-nedvijimost"
+    },
+    "apartment": {
+      "label": "Особняк",
+      "seo": "класса люкс",
+      "slug": "kvartira"
+    },
+    "newApartment": {
+      "label": "Новые апартаменты",
+      "seo": "класса люкс",
+      "slug": "hовые+апартаменты"
+    },
+    "house": {
+      "label": "Дом",
+      "seo": "дом люкс",
+      "slug": "pomestje"
+    },
+    "villa": {
+      "label": "Вилла",
+      "seo": "вилла люкс",
+      "slug": "pomestje"
+    },
+    "property": {
+      "label": "Поместье",
+      "seo": "поместье люкс",
+      "slug": "pomestje"
+    },
+    "newHouse": {
+      "label": "Новый дом",
+      "seo": "новый дом люкс",
+      "slug": "pomestje"
+    },
+    "bastide": {
+      "label": "Бастид",
+      "seo": "Бастид люкс",
+      "slug": "bastide"
+    },
+    "plotOfLand": {
+      "label": "Участок",
+      "seo": "участок люкс",
+      "slug": "ychastok"
+    },
+    "building": {
+      "label": "Дом",
+      "seo": "дом люкс",
+      "slug": "дом"
+    },
+    "loft": {
+      "label": "Лофт",
+      "seo": "лофт люкс",
+      "slug": "loft"
+    },
+    "chalet": {
+      "label": "Шале",
+      "seo": "щале люкс",
+      "slug": "chale"
+    },
+    "castle": {
+      "label": "Усадьба",
+      "seo": "усадьба люкс",
+      "slug": "ysadba"
+    },
+    "castle/manor": {
+      "label": "Усадьба / Поместье",
+      "seo": "усадьба / поместье люкс",
+      "slug": "ysadba"
+    },
+    "farm": {
+      "label": "Ферма",
+      "seo": "ферма люкс",
+      "slug": "vinogradnik"
+    },
+    "wineEstate": {
+      "label": "Виноградник",
+      "seo": "виноградник люкс",
+      "slug": "vinogradnik"
+    },
+    "mansion": {
+      "label": "Особняк",
+      "seo": "особняк люкс",
+      "slug": "osobnyak"
+    },
+    "yacht": {
+      "label": "Яхта",
+      "seo": "яхта люкс",
+      "slug": "yacht"
+    }
+  }
+}

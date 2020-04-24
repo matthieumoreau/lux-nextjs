@@ -14,7 +14,7 @@ const extendOfferWithOfferDictionary = offer => {
       ...offer.PropertyType,
       ...(offer.PropertyType.Id in propertyTypeDictionary
         ? propertyTypeDictionary[offer.PropertyType.Id]
-        : {}),
+        : propertyTypeDictionary[0]),
     };
   }
 
@@ -23,7 +23,7 @@ const extendOfferWithOfferDictionary = offer => {
       Id: offer.TransactionType,
       ...(offer.TransactionType in transactionTypeDictionary
         ? transactionTypeDictionary[offer.TransactionType]
-        : {}),
+        : transactionTypeDictionary[0]),
     };
   }
 
@@ -32,7 +32,7 @@ const extendOfferWithOfferDictionary = offer => {
       ...offer.HeatingKind,
       ...(offer.HeatingKind.Id in heatingKindDictionary
         ? heatingKindDictionary[offer.HeatingKind.Id]
-        : {}),
+        : heatingKindDictionary[0]),
     };
   }
 
@@ -41,7 +41,7 @@ const extendOfferWithOfferDictionary = offer => {
       ...offer.HeatingType,
       ...(offer.HeatingType.Id in heatingTypeDictionary
         ? heatingTypeDictionary[offer.HeatingType.Id]
-        : {}),
+        : heatingTypeDictionary[0]),
     };
   }
 
@@ -79,6 +79,5 @@ export default async (_source, { id }, { dataSources }) => {
 
   offer.Agency.siren ? offer.Agency.Siren.substr(0, 9) : offer.Agency.Siren;
 
-  // console.log(extendOfferWithOfferDictionary(offer));
   return extendOfferWithOfferDictionary(offer);
 };

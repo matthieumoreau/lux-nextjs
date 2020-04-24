@@ -1,1 +1,114 @@
-{ "hello": "Bonjour", "offer": "Annonce" }
+{
+  "hello": "Bonjour",
+  "offer": "Annonce",
+  "transactionType": {
+    "default": {
+      "label": "Default",
+      "slug": "default"
+    },
+    "sale": {
+      "label": "Vente",
+      "slug": "vente"
+    },
+    "rent": {
+      "label": "Location",
+      "slug": "location"
+    },
+    "longRent": {
+      "label": "Location longue durée",
+      "slug": "location-longue-duree"
+    }
+  },
+  "propertyType": {
+    "default": {
+      "label": "Immobilier prestige",
+      "seo": "immobilier prestige de luxe",
+      "slug": "immobilier-prestige"
+    },
+    "apartment": {
+      "label": "Appartement",
+      "seo": "appartement de luxe",
+      "slug": "appartement"
+    },
+    "newApartment": {
+      "label": "Appartement neuf",
+      "seo": "appartement neuf de luxe",
+      "slug": "appartement-neuf"
+    },
+    "house": {
+      "label": "Maison",
+      "seo": "maison de luxe",
+      "slug": "propriete"
+    },
+    "villa": {
+      "label": "Villa",
+      "seo": "villa de luxe",
+      "slug": "propriete"
+    },
+    "property": {
+      "label": "Propriété",
+      "seo": "propriété de luxe",
+      "slug": "propriete"
+    },
+    "newHouse": {
+      "label": "Maison neuve",
+      "seo": "maison neuve de luxe",
+      "slug": "propriete"
+    },
+    "bastide": {
+      "label": "Bastide",
+      "seo": "bastide de luxe",
+      "slug": "bastide"
+    },
+    "plotOfLand": {
+      "label": "Terrain",
+      "seo": "terrain de luxe",
+      "slug": "terrain"
+    },
+    "building": {
+      "label": "Immeuble",
+      "seo": "immeuble de luxe",
+      "slug": "immeuble"
+    },
+    "loft": {
+      "label": "Loft",
+      "seo": "loft de luxe",
+      "slug": "loft"
+    },
+    "chalet": {
+      "label": "Chalet",
+      "seo": "Chalet de luxe",
+      "slug": "chalet"
+    },
+    "castle": {
+      "label": "Château",
+      "seo": "château de luxe",
+      "slug": "chateau"
+    },
+    "castle/manor": {
+      "label": "Château / Manoir",
+      "seo": "château / manoir de luxe",
+      "slug": "chateau"
+    },
+    "farm": {
+      "label": "Ferme",
+      "seo": "farm de luxe",
+      "slug": "propriete-viticole"
+    },
+    "wineEstate": {
+      "label": "Propriété viticole",
+      "seo": "propriété viticole de luxe",
+      "slug": "propriete-viticole"
+    },
+    "mansion": {
+      "label": "Hôtel particulier",
+      "seo": "hôtel particulier de luxe",
+      "slug": "hotel-particulier"
+    },
+    "yacht": {
+      "label": "Yacht",
+      "seo": "yacht de luxe",
+      "slug": "yacht"
+    }
+  }
+}

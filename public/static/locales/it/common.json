@@ -1,1 +1,114 @@
-{ "hello": "Bonjour IT", "offer": "Annonce IT" }
+{
+  "hello": "Bonjour IT",
+  "offer": "Annonce IT",
+  "transactionType": {
+    "default": {
+      "label": "Default",
+      "slug": "default"
+    },
+    "sale": {
+      "label": "Vendita",
+      "slug": "vendita"
+    },
+    "rent": {
+      "label": "Affito stagionale",
+      "slug": "affitto"
+    },
+    "longRent": {
+      "label": "Affito a lungo termine",
+      "slug": "affitti-a-lungo-termine"
+    }
+  },
+  "propertyType": {
+    "default": {
+      "label": "Immobili di lusso",
+      "seo": "immobili di lusso",
+      "slug": "immobili-di-lusso"
+    },
+    "apartment": {
+      "label": "Appartamento già abitato",
+      "seo": "appartamento di lusso",
+      "slug": "appartamenti"
+    },
+    "newApartment": {
+      "label": "Appartamento nuovo",
+      "seo": "appartamento nuovo di lusso",
+      "slug": "appartamento-nuovo"
+    },
+    "house": {
+      "label": "Casa",
+      "seo": "casa di lusso",
+      "slug": "ville"
+    },
+    "villa": {
+      "label": "Villa",
+      "seo": "villa di lusso",
+      "slug": "ville"
+    },
+    "property": {
+      "label": "Casa indipendente",
+      "seo": "casa indipendente di lusso",
+      "slug": "ville"
+    },
+    "newHouse": {
+      "label": "Nuovo immobile",
+      "seo": "nuovo immobile di lusso",
+      "slug": "ville"
+    },
+    "bastide": {
+      "label": "Bastide",
+      "seo": "bastide di lusso",
+      "slug": "bastide"
+    },
+    "plotOfLand": {
+      "label": "Terrano",
+      "seo": "terrano di lusso",
+      "slug": "terreni"
+    },
+    "building": {
+      "label": "Immobile",
+      "seo": "immobile di lusso",
+      "slug": "immobile"
+    },
+    "loft": {
+      "label": "Loft",
+      "seo": "loft di lusso",
+      "slug": "loft"
+    },
+    "chalet": {
+      "label": "Casale",
+      "seo": "casale di lusso",
+      "slug": "casali"
+    },
+    "castle": {
+      "label": "Castello",
+      "seo": "castello di lusso",
+      "slug": "castelli"
+    },
+    "castle/manor": {
+      "label": "Castello / Maniero",
+      "seo": "castello / maniero di lusso",
+      "slug": "castelli"
+    },
+    "farm": {
+      "label": "Casa colonica",
+      "seo": "Casa colonica di lusso",
+      "slug": "vigneti"
+    },
+    "wineEstate": {
+      "label": "Vigneto",
+      "seo": "vigneto di lusso",
+      "slug": "vigneti"
+    },
+    "mansion": {
+      "label": "Tenuta",
+      "seo": "tenuta di lusso",
+      "slug": "tenute"
+    },
+    "yacht": {
+      "label": "Yacht",
+      "seo": "yacht di lusso",
+      "slug": "yacht"
+    }
+  }
+}

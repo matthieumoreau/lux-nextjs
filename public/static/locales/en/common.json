@@ -1,1 +1,114 @@
-{ "hello": "Hello", "offer": "Offer" }
+{
+  "hello": "Hello",
+  "offer": "Offer",
+  "transactionType": {
+    "default": {
+      "label": "Default",
+      "slug": "default"
+    },
+    "sale": {
+      "label": "Sale",
+      "slug": "sale"
+    },
+    "rent": {
+      "label": "Holiday rental",
+      "slug": "rent"
+    },
+    "longRent": {
+      "label": "Long-term rentals",
+      "slug": "long-term-rentals"
+    }
+  },
+  "propertyType": {
+    "default": {
+      "label": "Luxury real estate",
+      "seo": "Luxury real estate",
+      "slug": "luxury-real-estate"
+    },
+    "apartment": {
+      "label": "Apartment",
+      "seo": "luxury apartment",
+      "slug": "apartment"
+    },
+    "newApartment": {
+      "label": "New Apartment",
+      "seo": "luxury new Apartment",
+      "slug": "new-apartment"
+    },
+    "house": {
+      "label": "House",
+      "seo": "luxury house",
+      "slug": "property"
+    },
+    "villa": {
+      "label": "Villa",
+      "seo": "luxury villa",
+      "slug": "property"
+    },
+    "property": {
+      "label": "Property",
+      "seo": "luxury property",
+      "slug": "property"
+    },
+    "newHouse": {
+      "label": "New House",
+      "seo": "luxury new House",
+      "slug": "property"
+    },
+    "bastide": {
+      "label": "Bastide",
+      "seo": "luxury bastide",
+      "slug": "bastide"
+    },
+    "plotOfLand": {
+      "label": "Plot",
+      "seo": "luxury plot",
+      "slug": "land"
+    },
+    "building": {
+      "label": "Building",
+      "seo": "luxury building",
+      "slug": "apartment-building"
+    },
+    "loft": {
+      "label": "Loft",
+      "seo": "luxury loft",
+      "slug": "loft"
+    },
+    "chalet": {
+      "label": "Chalet",
+      "seo": "luxury chalet",
+      "slug": "country-cottage"
+    },
+    "castle": {
+      "label": "Castle",
+      "seo": "luxury castle",
+      "slug": "castle"
+    },
+    "castle/manor": {
+      "label": "Castle / Manor",
+      "seo": "luxury castle / manor",
+      "slug": "castle"
+    },
+    "farm": {
+      "label": "Farm",
+      "seo": "luxury farm",
+      "slug": "wine-property"
+    },
+    "wineEstate": {
+      "label": "Wine Estate",
+      "seo": "luxury wine estate",
+      "slug": "wine-property"
+    },
+    "mansion": {
+      "label": "Private mansion",
+      "seo": "luxury private mansion",
+      "slug": "private-mansion"
+    },
+    "yacht": {
+      "label": "Yacht",
+      "seo": "luxury yacht",
+      "slug": "yacht"
+    }
+  }
+}

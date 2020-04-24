@@ -1,6 +1,7 @@
 import { NextPage } from 'next';
 import React from 'react';
 import Head from 'next/head';
+import Error from 'next/error';
 import { ApolloProvider } from '@apollo/react-hooks';
 
 import createApolloClient from './../client';
@@ -83,11 +84,12 @@ export default function withApollo(
                 }}
               />
             );
-          } catch (error) {
+          } catch (e) {
             // Prevent Apollo Client GraphQL errors from crashing SSR.
             // Handle them in components via the data.error prop:
             // https://www.apollographql.com/docs/react/api/react-apollo.html#graphql-query-data-error
-            console.error('Error while running `getDataFromTree`', error);
+
+            console.error('Error while running `getDataFromTree`', e);
           }
 
           // getDataFromTree does not call componentWillUnmount

@@ -2,11 +2,24 @@ import React from 'react';
 import App from 'next/app';
 
 import { i18n, appWithTranslation } from '@i18n';
+import routes from '@config/routes';
 import cookieManager from '@utils/cookieManager';
 import deviceManager from '@utils/deviceManager';
+import urlManager from '@utils/urlManager';
 import GlobalContext from '@store/GlobalContext';
 
+import Layout from '@components/templates/Layout/Layout';
+
 function MyApp({ Component, pageProps, router, device, locale, ...props }) {
+  const getLayout = Component.getLayout || (page => <Layout children={page} />);
+
+  const ctx = {
+    pathname: router.pathname,
+    query: router.query,
+    asPath: router.asPath,
+    path: urlManager.getPath(router),
+  };
+
   return (
     <GlobalContext.Provider
       value={{
@@ -14,13 +27,10 @@ function MyApp({ Component, pageProps, router, device, locale, ...props }) {
         locales: process.env.LOCALES.split(','),
         device,
         domain: process.env.DOMAIN,
-        url: {
-          pathname: router.pathname,
-          query: router.query,
-          asPath: router.asPath,
-        },
+        ctx,
+        // urls: urlManager.getPageUrls(ctx),
       }}>
-      <Component {...pageProps} />
+      {getLayout(<Component {...pageProps} />)}
     </GlobalContext.Provider>
   );
 }

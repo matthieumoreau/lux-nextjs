@@ -19,7 +19,7 @@ export const common: InitConfig = {
   defaultNS: 'common',
   whitelist: [...languages],
   preload: [...languages],
-  strictMode: false,
+  // strictMode: false,
   shallowRender: true,
   customDetectors: [
     {

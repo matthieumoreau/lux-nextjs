@@ -62,7 +62,7 @@ const typeDefs = gql`
 
   type Offer {
     AdId: String!
-    AdRef: Int!
+    AdRef: String!
     IsExclusive: Boolean
 
     PropertyType: PropertyType

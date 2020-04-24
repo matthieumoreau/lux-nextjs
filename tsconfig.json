@@ -19,6 +19,7 @@
       "@interfaces/*": ["interfaces/*"],
       "@i18n": ["server/config/i18n/index.ts"],
       "@components/*": ["src/components/*"],
+      "@pages/*": ["src/pages/*"],
       "@store/*": ["src/store/*"],
       "@utils/*": ["utils/*"],
       "@config/*": ["config/*"]

@@ -1,1 +1,114 @@
-{ "hello": "Bonjour DE", "offer": "Annonce DE" }
+{
+  "hello": "Bonjour DE",
+  "offer": "Annonce DE",
+  "transactionType": {
+    "default": {
+      "label": "Default",
+      "slug": "default"
+    },
+    "sale": {
+      "label": "Verkauf",
+      "slug": "verkauf"
+    },
+    "rent": {
+      "label": "Ferienobjekte",
+      "slug": "miete"
+    },
+    "longRent": {
+      "label": "Langfristige vermietung",
+      "slug": "langzeitvermietungen"
+    }
+  },
+  "propertyType": {
+    "default": {
+      "label": "Prestige Immobilien",
+      "seo": "Prestige Immobilien für Luxusobjekt",
+      "slug": "Prestige-Immobilien"
+    },
+    "apartment": {
+      "label": "Andere Wohnungen",
+      "seo": "wohnungen für Luxusobjekt",
+      "slug": "wohnung"
+    },
+    "newApartment": {
+      "label": "Neubauwohnung",
+      "seo": "neubauwohnung für Luxusobjekt",
+      "slug": "neubauwohnung"
+    },
+    "house": {
+      "label": "Haus",
+      "seo": "haus für Luxusobjekt",
+      "slug": "liegenschaft"
+    },
+    "villa": {
+      "label": "Villa",
+      "seo": "villa für Luxusobjekt",
+      "slug": "liegenschaft"
+    },
+    "property": {
+      "label": "Anwesen",
+      "seo": "anwesen für Luxusobjekt",
+      "slug": "liegenschaft"
+    },
+    "newHouse": {
+      "label": "Neues Haus",
+      "seo": "neues haus für Luxusobjekt",
+      "slug": "liegenschaft"
+    },
+    "bastide": {
+      "label": "Bastide",
+      "seo": "bastide für Luxusobjekt",
+      "slug": "bastide"
+    },
+    "plotOfLand": {
+      "label": "Grundstück",
+      "seo": "grundstuck für Luxusobjekt",
+      "slug": "grundstuck"
+    },
+    "building": {
+      "label": "Immobilie",
+      "seo": "immobilie für Luxusobjekt",
+      "slug": "immobilie"
+    },
+    "loft": {
+      "label": "Loft",
+      "seo": "loft für Luxusobjekt",
+      "slug": "loft"
+    },
+    "chalet": {
+      "label": "Chalet",
+      "seo": "chalet für Luxusobjekt",
+      "slug": "chalet"
+    },
+    "castle": {
+      "label": "Schloss",
+      "seo": "schloss für Luxusobjekt",
+      "slug": "schloss-herrschaftshaus"
+    },
+    "castle/manor": {
+      "label": "Schloss / Herrenhaus",
+      "seo": "schloss / herrenhaus für Luxusobjekt",
+      "slug": "schloss-herrschaftshaus"
+    },
+    "farm": {
+      "label": "Bauernhof",
+      "seo": "bauernhof für Luxusobjekt",
+      "slug": "weingut"
+    },
+    "wineEstate": {
+      "label": "Weingut",
+      "seo": "weingut für Luxusobjekt",
+      "slug": "weingut"
+    },
+    "mansion": {
+      "label": "Bürgerhaus",
+      "seo": "burgerhaus für Luxusobjekt",
+      "slug": "burgerhaus"
+    },
+    "yacht": {
+      "label": "Jacht",
+      "seo": "yacht für Luxusobjekt",
+      "slug": "yacht"
+    }
+  }
+}

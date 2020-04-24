@@ -1,15 +1,43 @@
 import * as React from 'react';
-import Link from '@components/atoms/Link/Link';
+import { useRouter } from 'next/router';
+import styled from 'styled-components';
 
-type LangSwitchProps = {};
+import { i18n } from '@i18n';
+import { useGlobalContext } from '@store/GlobalContext';
 
-const LangSwitch: React.FunctionComponent<LangSwitchProps> = () => {
+type LangSwitchProps = {
+  urls: any;
+};
+
+const Button = styled.button<{ isActive: boolean }>`
+  color: ${props => (props.isActive ? 'green' : 'blue')};
+`;
+
+const LangSwitch: React.FunctionComponent<LangSwitchProps> = ({ urls }) => {
+  const router = useRouter();
+  const { ctx, domain, currentLocale } = useGlobalContext();
+
+  const handleClick = (e, locale) => {
+    e.preventDefault();
+    return i18n
+      .changeLanguage(locale)
+      .then(() =>
+        router.push(
+          { pathname: ctx.pathname, query: ctx.query },
+          urls[locale].asPath
+        )
+      );
+  };
+
   return (
     <>
       {process.env.LOCALES.split(',').map((locale, index) => (
-        <Link as="button" key={index} locale={locale} href={`/${locale}`}>
+        <Button
+          key={index}
+          onClick={e => handleClick(e, locale)}
+          isActive={locale === currentLocale}>
           {locale}
-        </Link>
+        </Button>
       ))}
     </>
   );
