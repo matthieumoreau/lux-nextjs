@@ -239,10 +239,11 @@ const urlManager = {
       zipCode = '';
     }
 
-    if (zipCode[0] !== '0' || zipCode[1] !== '0') {
-      return zipCode.toString().substr(0, 2);
+    if (zipCode.toString().length === 4) {
+      zipCode = '0' + zipCode.toString();
     }
-    return zipCode.toString().substr(2, 3);
+
+    return zipCode.toString().substr(0, 2);
   },
 };
 

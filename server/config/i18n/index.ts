@@ -1,10 +1,12 @@
 import NextI18Next from 'next-i18next';
-import { common, detection } from './config.i18n';
+import { common, detection, languages } from './config.i18n';
 
 const nextI18next = new NextI18Next({
   ...common,
   detection,
 });
+
+nextI18next.i18n.languages = languages;
 
 export default nextI18next;
 // export const includeDefaultNamespaces = namespaces =>

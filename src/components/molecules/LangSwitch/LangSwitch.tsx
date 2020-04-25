@@ -19,14 +19,12 @@ const LangSwitch: React.FunctionComponent<LangSwitchProps> = ({ urls }) => {
 
   const handleClick = (e, locale) => {
     e.preventDefault();
-    return i18n
-      .changeLanguage(locale)
-      .then(() =>
-        router.push(
-          { pathname: ctx.pathname, query: ctx.query },
-          urls[locale].asPath
-        )
+    return i18n.changeLanguage(locale).then(() => {
+      router.push(
+        { pathname: urls[locale].pathname, query: urls[locale].query },
+        urls[locale].asPath
       );
+    });
   };
 
   return (

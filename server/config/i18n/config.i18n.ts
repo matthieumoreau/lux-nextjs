@@ -2,7 +2,7 @@ import path from 'path';
 import locale from 'locale';
 import { InitConfig } from 'next-i18next';
 
-const languages = process.env.LOCALES
+export const languages = process.env.LOCALES
   ? process.env.LOCALES.split(',')
   : ['fr', 'en', 'it', 'de', 'nl', 'ru'];
 
