@@ -28,7 +28,9 @@ const Link: React.FunctionComponent<LinkProps & NextLinkProps> = ({
   ...props
 }) => {
   const router = useRouter();
-  const { domain, currentLocale } = useGlobalContext();
+  const {
+    state: { domain, currentLocale, ctx },
+  } = useGlobalContext();
 
   /**
    *
@@ -41,6 +43,7 @@ const Link: React.FunctionComponent<LinkProps & NextLinkProps> = ({
         href: pathname,
       };
     }
+
     let { asPath, query } = ctx;
 
     return {
@@ -57,9 +60,17 @@ const Link: React.FunctionComponent<LinkProps & NextLinkProps> = ({
    **/
   const handleClick = (e, props) => {
     const { href, as } = props;
+
+    if (ctx.pathname === '/_error') {
+      return window.location.replace(`${as}`);
+    }
+
     if (typeof href === 'object' && href.query.locale !== currentLocale) {
       e.preventDefault();
-      i18n.changeLanguage(href.query.locale).then(() => router.push(href, as));
+
+      return i18n
+        .changeLanguage(href.query.locale)
+        .then(() => router.push(href, as));
     }
   };
 
@@ -69,7 +80,9 @@ const Link: React.FunctionComponent<LinkProps & NextLinkProps> = ({
       const nextLinkprops = getLinkProps(href, locale || currentLocale, data);
       return (
         <NextLink {...nextLinkprops} {...props}>
-          <a onClick={e => handleClick(e, props)} target={'_self' || target}>
+          <a
+            onClick={e => handleClick(e, nextLinkprops)}
+            target={'_self' || target}>
             {children}
           </a>
         </NextLink>

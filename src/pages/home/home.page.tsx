@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NextPage, NextPageContext } from 'next';
 import { useTranslation } from '@i18n';
 import styled from 'styled-components';
@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import urlManager from '@utils/urlManager';
 
 import Link from '@components/atoms/Link/Link';
-import LangSwitch from '@components/molecules/LangSwitch/LangSwitch';
 
 import { useGlobalContext } from '@store/GlobalContext';
 
@@ -150,8 +149,18 @@ const offer = {
 };
 
 const Page: NextPage<Props> = () => {
-  const { currentLocale, device, ctx, urls } = useGlobalContext();
+  const {
+    state: { currentLocale, device, ctx, urls },
+    dispatch,
+  } = useGlobalContext();
   const { t } = useTranslation();
+
+  useEffect(() => {
+    dispatch({
+      type: 'SET_URLS',
+      payload: urlManager.getPageUrls(ctx),
+    });
+  }, [ctx]);
 
   // console.(getLinkProps('/offer/offer', currentLocale, offer));
   return (

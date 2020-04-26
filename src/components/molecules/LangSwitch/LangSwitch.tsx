@@ -5,22 +5,24 @@ import styled from 'styled-components';
 import { i18n } from '@i18n';
 import { useGlobalContext } from '@store/GlobalContext';
 
-type LangSwitchProps = {
-  urls: any;
-};
-
 const Button = styled.button<{ isActive: boolean }>`
   color: ${props => (props.isActive ? 'green' : 'blue')};
 `;
 
-const LangSwitch: React.FunctionComponent<LangSwitchProps> = ({ urls }) => {
+const LangSwitch: React.FunctionComponent = () => {
   const router = useRouter();
-  const { ctx, domain, currentLocale } = useGlobalContext();
+  const {
+    state: { ctx, currentLocale, urls },
+    dispatch,
+  } = useGlobalContext();
 
   const handleClick = (e, locale) => {
     e.preventDefault();
+    if (ctx.pathname === '/_error') {
+      return window.location.replace(`/${locale}`);
+    }
     return i18n.changeLanguage(locale).then(() => {
-      router.push(
+      return router.push(
         { pathname: urls[locale].pathname, query: urls[locale].query },
         urls[locale].asPath
       );

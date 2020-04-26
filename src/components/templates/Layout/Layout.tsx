@@ -1,12 +1,11 @@
 import LangSwitch from '@components/molecules/LangSwitch/LangSwitch';
-import { useGlobalContext } from '@store/GlobalContext';
 
 const Layout = ({ children }) => {
-  const { currentLocale } = useGlobalContext();
   return (
     <>
       <header>
         <p>HEADER</p>
+        <LangSwitch />
       </header>
 
       <main>{children}</main>

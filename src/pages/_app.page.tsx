@@ -6,14 +6,14 @@ import routes from '@config/routes';
 import cookieManager from '@utils/cookieManager';
 import deviceManager from '@utils/deviceManager';
 import urlManager from '@utils/urlManager';
-import GlobalContext from '@store/GlobalContext';
+import GlobalContextProvider from '@store/GlobalContext';
 
 import Layout from '@components/templates/Layout/Layout';
 
 function MyApp({ Component, pageProps, router, device, locale, ...props }) {
   const getLayout = Component.getLayout || (page => <Layout children={page} />);
 
-  const ctx = {
+  let ctx = {
     pathname: router.pathname,
     query: router.query,
     asPath: router.asPath,
@@ -21,17 +21,17 @@ function MyApp({ Component, pageProps, router, device, locale, ...props }) {
   };
 
   return (
-    <GlobalContext.Provider
+    <GlobalContextProvider
       value={{
-        currentLocale: locale,
+        currentLocale: i18n.language || locale,
         locales: process.env.LOCALES.split(','),
         device,
         domain: process.env.DOMAIN,
         ctx,
-        // urls: urlManager.getPageUrls(ctx),
+        urls: urlManager.getPageUrls(ctx),
       }}>
       {getLayout(<Component {...pageProps} />)}
-    </GlobalContext.Provider>
+    </GlobalContextProvider>
   );
 }
 

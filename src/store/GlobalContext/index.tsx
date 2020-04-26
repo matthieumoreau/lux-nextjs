@@ -1,4 +1,5 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useReducer, useEffect } from 'react';
+import isEqual from 'lodash/isequal';
 import { ParsedUrlQuery } from 'querystring';
 
 type Ctx = {
@@ -8,17 +9,69 @@ type Ctx = {
   path?: string;
 };
 
-export type GlobalContextProps = {
+export type GlobalContextState = {
   currentLocale: string;
   locales: string[];
   device: 'mobile' | 'phone' | 'tablet' | 'desktop';
   domain: string;
   ctx: Ctx;
-  urls?: any;
+  urls: Array<any>;
 };
 
-const GlobalContext = createContext<GlobalContextProps>(null);
+export type GlobalContext = {
+  state: GlobalContextState;
+  dispatch?: any;
+};
 
-export const useGlobalContext = () => useContext(GlobalContext);
+const GlobalContext = createContext<GlobalContext>(null);
 
-export default GlobalContext;
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'SET_CTX':
+      return { ...state, ctx: action.payload };
+    case 'SET_URLS':
+      return {
+        ...state,
+        urls: action.payload,
+      };
+    case 'SET_CURRENT_LOCALE':
+      return { ...state, currentLocale: action.payload };
+    case 'SET_DEVICE':
+      return { ...state, device: action.payload };
+  }
+};
+
+const GlobalContextProvider = ({ value, children }) => {
+  let [state, dispatch] = useReducer(reducer, value);
+
+  useEffect(() => {
+    dispatch({
+      type: 'SET_CURRENT_LOCALE',
+      payload: value.currentLocale,
+    });
+
+    dispatch({
+      type: 'SET_CTX',
+      payload: value.ctx,
+    });
+
+    if (value.device !== state.device) {
+      dispatch({
+        type: 'SET_DEVICE',
+        payload: value.device,
+      });
+    }
+  }, [value]);
+
+  return (
+    <GlobalContext.Provider value={{ state, dispatch }}>
+      {children}
+    </GlobalContext.Provider>
+  );
+};
+
+export const useGlobalContext = () => {
+  return useContext(GlobalContext);
+};
+
+export default GlobalContextProvider;

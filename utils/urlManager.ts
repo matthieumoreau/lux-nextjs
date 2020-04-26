@@ -16,7 +16,7 @@ const urlManager = {
     return urls;
   },
 
-  getPageUrl: (ctx, locale = 'fr', data = null) => {
+  getPageUrl: (ctx, locale = 'en', data = null) => {
     if (typeof ctx !== 'object') return null;
 
     //** Check if pathname exists. If not, consider it as an "asPath" and try   */
@@ -81,6 +81,11 @@ const urlManager = {
 
   getOfferPageUrl: (ctx, locale, data) => {
     const t = i18n.getFixedT(locale);
+
+    if (data === null) {
+      return urlManager.generateUrl(ctx.path, ctx.query);
+    }
+
     const transactionType = slugify(
       t(`${data.transactionType.translationKey}.slug`)
     );
@@ -192,7 +197,7 @@ const urlManager = {
         path, // the path used to match
         pathname: pathname,
         asPath: path === '/' && url === '' ? '/' : url, // the matched portion of the URL
-        isExact, // whether or not we matched exactly
+        // isExact, // whether or not we matched exactly
         query: keys.reduce((memo, key, index) => {
           memo[key.name] = values[index];
           return memo;

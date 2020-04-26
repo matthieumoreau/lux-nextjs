@@ -12,7 +12,7 @@ let defaultLanguage, otherLanguages;
 export const common: InitConfig = {
   defaultLanguage,
   otherLanguages,
-  fallbackLng: ['fr'],
+  fallbackLng: defaultLanguage,
   load: 'languageOnly',
   lowerCaseLng: true,
   ns: ['common'],
@@ -21,24 +21,25 @@ export const common: InitConfig = {
   preload: [...languages],
   // strictMode: false,
   shallowRender: true,
-  customDetectors: [
-    {
-      name: 'liHeader',
-      lookup: function(req, res, options) {
-        const browserLocales = new locale.Locales(
-          req.headers['accept-language']
-        );
-        const supported = new locale.Locales(languages);
-        const best = browserLocales.best(supported);
-        return !best.defaulted && best.code;
-      },
-    },
-  ],
-  debug: false, // process.env.NODE_ENV === 'development',
+  // customDetectors: [
+  //   {
+  //     name: 'liHeader',
+  //     lookup: function(req, res, options) {
+
+  //       // const browserLocales = new locale.Locales(
+  //       //   req.headers['accept-language']
+  //       // );
+  //       // const supported = new locale.Locales(languages);
+  //       // const best = browserLocales.best(supported);
+  //       // return !best.defaulted && best.code;
+  //     },
+  //   },
+  // ],
+  debug: true, // process.env.NODE_ENV === 'development',
 };
 
 export const detection = {
-  order: ['path', 'cookie', 'liHeaderLookup', 'queryString'],
+  order: ['path', 'queryString', 'liHeader', 'cookie'],
   lookupQuerystring: 'locale',
   lookupCookie: 'locale',
   lookupFromPathIndex: 0,
