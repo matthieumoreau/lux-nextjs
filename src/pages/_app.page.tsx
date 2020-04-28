@@ -1,8 +1,8 @@
 import React from 'react';
 import App from 'next/app';
+import { DefaultSeo } from 'next-seo';
 
 import { i18n, appWithTranslation } from '@i18n';
-import routes from '@config/routes';
 import cookieManager from '@utils/cookieManager';
 import deviceManager from '@utils/deviceManager';
 import urlManager from '@utils/urlManager';
@@ -10,9 +10,7 @@ import GlobalContextProvider from '@store/GlobalContext';
 
 import Layout from '@components/templates/Layout/Layout';
 
-function MyApp({ Component, pageProps, router, device, locale, ...props }) {
-  const getLayout = Component.getLayout || (page => <Layout children={page} />);
-
+function MyApp({ Component, pageProps, router, device, locale }) {
   let ctx = {
     pathname: router.pathname,
     query: router.query,
@@ -21,17 +19,21 @@ function MyApp({ Component, pageProps, router, device, locale, ...props }) {
   };
 
   return (
-    <GlobalContextProvider
-      value={{
-        currentLocale: i18n.language || locale,
-        locales: process.env.LOCALES.split(','),
-        device,
-        domain: process.env.DOMAIN,
-        ctx,
-        urls: urlManager.getPageUrls(ctx),
-      }}>
-      {getLayout(<Component {...pageProps} />)}
-    </GlobalContextProvider>
+    <>
+      <GlobalContextProvider
+        value={{
+          currentLocale: i18n.language || locale,
+          locales: process.env.LOCALES.split(','),
+          device,
+          domain: process.env.DOMAIN,
+          ctx,
+          urls: urlManager.getPageUrls(ctx),
+        }}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </GlobalContextProvider>
+    </>
   );
 }
 

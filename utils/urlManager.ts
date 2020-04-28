@@ -19,7 +19,7 @@ const urlManager = {
   getPageUrl: (ctx, locale = 'en', data = null) => {
     if (typeof ctx !== 'object') return null;
 
-    //** Check if pathname exists. If not, consider it as an "asPath" and try   */
+    //** Check if pathname exists. If not, it is considered as an "asPath" to get the context. If not, return null  */
     if (
       Object.entries(routes).filter(
         ([key, value]) => value.pathname === ctx.pathname

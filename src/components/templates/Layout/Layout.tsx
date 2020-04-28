@@ -10,13 +10,11 @@ const Layout = ({ children }) => {
 
       <main>{children}</main>
 
-      <header>
+      <footer>
         <p>FOOTER</p>
-      </header>
+      </footer>
     </>
   );
 };
-
-export const getLayout = page => <Layout>{page}</Layout>;
 
 export default Layout;

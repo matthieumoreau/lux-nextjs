@@ -1,5 +1,4 @@
 import path from 'path';
-import locale from 'locale';
 import { InitConfig } from 'next-i18next';
 
 export const languages = process.env.LOCALES
@@ -21,25 +20,13 @@ export const common: InitConfig = {
   preload: [...languages],
   // strictMode: false,
   shallowRender: true,
-  // customDetectors: [
-  //   {
-  //     name: 'liHeader',
-  //     lookup: function(req, res, options) {
-
-  //       // const browserLocales = new locale.Locales(
-  //       //   req.headers['accept-language']
-  //       // );
-  //       // const supported = new locale.Locales(languages);
-  //       // const best = browserLocales.best(supported);
-  //       // return !best.defaulted && best.code;
-  //     },
-  //   },
-  // ],
-  debug: true, // process.env.NODE_ENV === 'development',
+  browserLanguageDetection: false,
+  serverLanguageDetection: true,
+  debug: false, // process.env.NODE_ENV === 'development',
 };
 
 export const detection = {
-  order: ['path', 'queryString', 'liHeader', 'cookie'],
+  order: ['path', 'queryString', 'cookie'],
   lookupQuerystring: 'locale',
   lookupCookie: 'locale',
   lookupFromPathIndex: 0,

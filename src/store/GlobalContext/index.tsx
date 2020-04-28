@@ -1,6 +1,13 @@
-import { createContext, useContext, useReducer, useEffect } from 'react';
+import {
+  createContext,
+  useContext,
+  useReducer,
+  useEffect,
+  useState,
+} from 'react';
 import isEqual from 'lodash/isequal';
 import { ParsedUrlQuery } from 'querystring';
+import { i18n } from '@i18n';
 
 type Ctx = {
   pathname: string;
@@ -28,39 +35,61 @@ const GlobalContext = createContext<GlobalContext>(null);
 const reducer = (state, action) => {
   switch (action.type) {
     case 'SET_CTX':
+      // console.log(action.type, action.payload);
       return { ...state, ctx: action.payload };
     case 'SET_URLS':
-      return {
-        ...state,
-        urls: action.payload,
-      };
+      // console.log(action.type, action.payload);
+      return { ...state, urls: action.payload };
     case 'SET_CURRENT_LOCALE':
+      // console.log(action.type, action.payload);
       return { ...state, currentLocale: action.payload };
     case 'SET_DEVICE':
+      // console.log(action.type, action.payload);
       return { ...state, device: action.payload };
   }
 };
 
 const GlobalContextProvider = ({ value, children }) => {
   let [state, dispatch] = useReducer(reducer, value);
+  const [isI18nInitialized, setI18nInitialized] = useState(false);
 
   useEffect(() => {
-    dispatch({
-      type: 'SET_CURRENT_LOCALE',
-      payload: value.currentLocale,
-    });
+    // i18n.on('initialized', () => {
+    //   console.log('isI18n');
+    //   setI18nInitialized(true);
+    // });
 
-    dispatch({
-      type: 'SET_CTX',
-      payload: value.ctx,
-    });
+    if (!isEqual(value.currentLocale, state.currentLocale)) {
+      dispatch({
+        type: 'SET_CURRENT_LOCALE',
+        payload: value.currentLocale,
+      });
+    }
 
-    if (value.device !== state.device) {
+    if (!isEqual(value.ctx, state.ctx)) {
+      dispatch({
+        type: 'SET_CTX',
+        payload: value.ctx,
+      });
+
+      if (!isEqual(value.urls, state.urls)) {
+        dispatch({
+          type: 'SET_URLS',
+          payload: value.urls,
+        });
+      }
+    }
+
+    if (!isEqual(value.device, state.device)) {
       dispatch({
         type: 'SET_DEVICE',
         payload: value.device,
       });
     }
+
+    // return i18n.off('initialized', () => {
+    //   console.log('OFF');
+    // });
   }, [value]);
 
   return (

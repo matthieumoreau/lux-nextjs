@@ -1,11 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NextPage, NextPageContext } from 'next';
-import Error from '@pages/_error.page';
+import isEqual from 'lodash/isequal';
+import { useQuery } from '@apollo/react-hooks';
 import styled from 'styled-components';
+
+import Error from '@pages/_error.page';
+
 import withApollo from './../../graphql/withApollo';
 import { useGlobalContext } from '@store/GlobalContext';
-import { useTranslation } from '@i18n';
-import { useQuery } from '@apollo/react-hooks';
+import { useTranslation, i18n } from '@i18n';
+
 import OFFER_QUERY from './offer.query';
 import Link from '@components/atoms/Link/Link';
 
@@ -34,26 +38,26 @@ const Page: NextPage<Props> = () => {
   const { data, loading, error } = useQuery(OFFER_QUERY, {
     variables: { id: ctx.query.offerId },
     onError: () => <Error statusCode={404} />,
+    onCompleted: data => {
+      i18n.on('initialized', () => {
+        dispatch({
+          type: 'SET_URLS',
+          payload: urlManager.getPageUrls(ctx, data.offer),
+        });
+      });
+    },
   });
 
   useEffect(() => {
     if (data) {
-      dispatch({
-        type: 'SET_URLS',
-        payload: urlManager.getPageUrls(ctx, data.offer),
-      });
+      if (!isEqual(urlManager.getPageUrls(ctx, data.offer), urls)) {
+        dispatch({
+          type: 'SET_URLS',
+          payload: urlManager.getPageUrls(ctx, data.offer),
+        });
+      }
     }
-  }, [ctx, data]);
-
-  // if (
-  //   Object.entries(urls[currentLocale].query).toString() !==
-  //   Object.entries(ctx.query).toString()
-  // )
-  //   return (
-  //     <>
-  //       <Error statusCode={404} />
-  //     </>
-  //   );
+  }, [data, ctx]);
 
   return (
     <>
@@ -64,7 +68,7 @@ const Page: NextPage<Props> = () => {
       {data && (
         <Description>{data.offer.description[currentLocale]}</Description>
       )}
-      <Link href="/home/home">Homepage </Link>
+      <Link href="/home/home">Homepage</Link>
     </>
   );
 };
