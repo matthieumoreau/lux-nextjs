@@ -11,7 +11,9 @@ import { useGlobalContext } from '@store/GlobalContext';
 
 import './home.styles.less';
 
-interface Props {}
+interface Props {
+  ctx: any;
+}
 
 const Title = styled.h1`
   color: red;
@@ -148,9 +150,9 @@ const offer = {
   },
 };
 
-const Page: NextPage<Props> = () => {
+const Page: NextPage<Props> = ({ ctx }) => {
   const {
-    state: { currentLocale, device, ctx, urls },
+    state: { currentLocale, device },
     dispatch,
   } = useGlobalContext();
   const { t } = useTranslation();
@@ -162,7 +164,6 @@ const Page: NextPage<Props> = () => {
     });
   }, [ctx]);
 
-  // console.(getLinkProps('/offer/offer', currentLocale, offer));
   return (
     <>
       <Title>{t('hello')} - Homepage with styled-component!</Title>
@@ -205,6 +206,11 @@ const Page: NextPage<Props> = () => {
 
 Page.getInitialProps = async (ctx: NextPageContext) => {
   return {
+    ctx: {
+      pathname: ctx.pathname,
+      asPath: ctx.asPath,
+      query: ctx.query,
+    },
     namespacesRequired: ['common'],
   };
 };

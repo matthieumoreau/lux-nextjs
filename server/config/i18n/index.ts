@@ -6,7 +6,7 @@ const nextI18next = new NextI18Next({
   detection,
 });
 
-nextI18next.i18n.languages = languages;
+// nextI18next.i18n.languages = languages;
 
 export default nextI18next;
 // export const includeDefaultNamespaces = namespaces =>

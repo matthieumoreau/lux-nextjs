@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Error from 'next/error';
 import { ApolloProvider } from '@apollo/react-hooks';
 
-import createApolloClient from './../client';
+import createApolloClient from './client';
 
 import {
   InitialProps,

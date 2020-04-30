@@ -1,11 +1,12 @@
 class SwaggerMapper {
   swaggerMapStage: JSON;
+
   /**
    * Used to initialise the mapping class
    *
    * @param map
    */
-  constructor(map: JSON) {
+  constructor(map: any) {
     this.swaggerMapStage = map;
   }
 

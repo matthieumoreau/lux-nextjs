@@ -24,7 +24,8 @@ const LangSwitch: React.FunctionComponent = () => {
     return i18n.changeLanguage(locale).then(() => {
       return router.push(
         { pathname: urls[locale].pathname, query: urls[locale].query },
-        urls[locale].asPath
+        urls[locale].asPath,
+        { shallow: true }
       );
     });
   };

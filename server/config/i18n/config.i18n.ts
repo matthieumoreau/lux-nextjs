@@ -22,7 +22,7 @@ export const common: InitConfig = {
   shallowRender: true,
   browserLanguageDetection: false,
   serverLanguageDetection: true,
-  debug: false, // process.env.NODE_ENV === 'development',
+  // debug: true, // process.env.NODE_ENV === 'development',
 };
 
 export const detection = {

@@ -1,11 +1,10 @@
-import {
-  createContext,
-  useContext,
-  useReducer,
-  useEffect,
-  useState,
-} from 'react';
+import { createContext, useContext, useReducer, useEffect } from 'react';
+
 import isEqual from 'lodash/isequal';
+import xorWith from 'lodash/xorWith';
+import isEmpty from 'lodash/isEmpty';
+import flow from 'lodash/flow';
+
 import { ParsedUrlQuery } from 'querystring';
 import { i18n } from '@i18n';
 
@@ -34,6 +33,9 @@ const GlobalContext = createContext<GlobalContext>(null);
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case 'SET_HEAD':
+      // console.log(action.type, action.payload);
+      return { ...state, head: action.payload };
     case 'SET_CTX':
       // console.log(action.type, action.payload);
       return { ...state, ctx: action.payload };
@@ -51,14 +53,21 @@ const reducer = (state, action) => {
 
 const GlobalContextProvider = ({ value, children }) => {
   let [state, dispatch] = useReducer(reducer, value);
-  const [isI18nInitialized, setI18nInitialized] = useState(false);
+  // const [isI18nInitializing, setIsI18nInitializing] = useState(null);
+
+  // Change <html>'s language on languageChanged event
+  if (typeof window !== undefined) {
+    i18n.on('languageChanged', function(lang) {
+      const html = document.querySelector('html');
+      if (html) html.setAttribute('lang', lang);
+    });
+  }
+
+  // const isArrayEqual = (x, y) => {
+  //   return flow(xorWith(y, isEqual), isEmpty)(x);
+  // };
 
   useEffect(() => {
-    // i18n.on('initialized', () => {
-    //   console.log('isI18n');
-    //   setI18nInitialized(true);
-    // });
-
     if (!isEqual(value.currentLocale, state.currentLocale)) {
       dispatch({
         type: 'SET_CURRENT_LOCALE',
@@ -71,13 +80,14 @@ const GlobalContextProvider = ({ value, children }) => {
         type: 'SET_CTX',
         payload: value.ctx,
       });
+    }
 
-      if (!isEqual(value.urls, state.urls)) {
-        dispatch({
-          type: 'SET_URLS',
-          payload: value.urls,
-        });
-      }
+    // if (!isEqual(value.urls['fr'].pathname, state.urls['fr'].pathname)) {
+    if (!isEqual(value.urls, state.urls)) {
+      dispatch({
+        type: 'SET_URLS',
+        payload: value.urls,
+      });
     }
 
     if (!isEqual(value.device, state.device)) {
@@ -87,13 +97,18 @@ const GlobalContextProvider = ({ value, children }) => {
       });
     }
 
-    // return i18n.off('initialized', () => {
-    //   console.log('OFF');
-    // });
-  }, [value]);
+    return () => {
+      // i18n.off('initialized', () => {});
+    };
+  }, [value.ctx, dispatch]);
 
   return (
-    <GlobalContext.Provider value={{ state, dispatch }}>
+    <GlobalContext.Provider
+      value={{
+        state,
+        dispatch,
+      }}>
+      {/* {isI18nInitialized ? children : <p>Loading</p>} */}
       {children}
     </GlobalContext.Provider>
   );

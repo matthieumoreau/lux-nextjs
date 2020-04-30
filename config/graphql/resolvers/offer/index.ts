@@ -1,5 +1,5 @@
 import SwaggerMapper from '../../../../server/mappers/swagger';
-import swaggerDataMapping from './offer.mapping';
+import swaggerDataMapping from './offer.mapping.json';
 
 import {
   transactionTypeDictionary,
@@ -52,7 +52,7 @@ export default async (_source, { id }, { dataSources }) => {
   const data = await dataSources.bellesDemeuresEndPoint.getOffer(id);
 
   const mapper = new SwaggerMapper(swaggerDataMapping);
-  let offer = mapper.map(data.data);
+  let offer: any = mapper.map(data.data);
 
   const getOfferVisual = (offerId, visualId) => {
     const offerDirectory = offerId.substr(0, 3);

@@ -2,8 +2,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "commonjs",
-    "outDir": ".build/server",
-    "target": "es2017",
+    "outDir": ".build",
+    "target": "es2019",
     "isolatedModules": false,
     "noEmit": false
   },

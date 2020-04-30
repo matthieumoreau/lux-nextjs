@@ -8,7 +8,7 @@ import GlobalContextProvider from '@store/GlobalContext';
 
 import Layout from '@components/templates/Layout/Layout';
 
-function MyApp({ Component, pageProps, router, device, locale }) {
+function MyApp({ Component, pageProps, router, device, locale, isServer }) {
   let ctx = {
     pathname: router.pathname,
     query: router.query,
@@ -59,6 +59,7 @@ MyApp.getInitialProps = async appContext => {
 
   return {
     ...appProps,
+
     locale: req ? req.language : i18n.language,
     device: req
       ? deviceManager(req.headers['user-agent'] || req.headers['User-Agent'])
