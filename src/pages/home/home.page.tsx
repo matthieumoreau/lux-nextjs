@@ -9,6 +9,7 @@ import Link from '@components/atoms/Link/Link';
 
 import { useGlobalContext } from '@store/GlobalContext';
 
+import { PageSeo } from '@components/organisms/Seo';
 import './home.styles.less';
 
 interface Props {
@@ -166,6 +167,7 @@ const Page: NextPage<Props> = ({ ctx }) => {
 
   return (
     <>
+      <PageSeo title="Homepage Lux" description="Homepage description" />
       <Title>{t('hello')} - Homepage with styled-component!</Title>
       <div className="title">{t('hello')} - Homepage with Less style!</div>
       <main>Your current locale: {currentLocale}</main>
