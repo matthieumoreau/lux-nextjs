@@ -1,4 +1,10 @@
-import { createContext, useContext, useReducer, useEffect } from 'react';
+import {
+  createContext,
+  useContext,
+  useReducer,
+  useEffect,
+  useState,
+} from 'react';
 
 import isEqual from 'lodash/isequal';
 import xorWith from 'lodash/xorWith';
@@ -53,7 +59,7 @@ const reducer = (state, action) => {
 
 const GlobalContextProvider = ({ value, children }) => {
   let [state, dispatch] = useReducer(reducer, value);
-  // const [isI18nInitializing, setIsI18nInitializing] = useState(null);
+  const [isI18nInitialized, setIsI18nInitialized] = useState(null);
 
   // Change <html>'s language on languageChanged event
   if (typeof window !== undefined) {
@@ -68,6 +74,10 @@ const GlobalContextProvider = ({ value, children }) => {
   // };
 
   useEffect(() => {
+    i18n.on('initialized', function(lang) {
+      setIsI18nInitialized(true);
+    });
+
     if (!isEqual(value.currentLocale, state.currentLocale)) {
       dispatch({
         type: 'SET_CURRENT_LOCALE',
@@ -98,7 +108,7 @@ const GlobalContextProvider = ({ value, children }) => {
     }
 
     return () => {
-      // i18n.off('initialized', () => {});
+      i18n.off('initialized', () => {});
     };
   }, [value.ctx, dispatch]);
 

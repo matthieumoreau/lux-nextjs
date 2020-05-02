@@ -3,13 +3,13 @@ import { NextPage, NextPageContext } from 'next';
 import { useTranslation } from '@i18n';
 import styled from 'styled-components';
 
+import { useGlobalContext } from '@store/GlobalContext';
 import urlManager from '@utils/urlManager';
+import seoManager from '@utils/seoManager';
 
 import Link from '@components/atoms/Link/Link';
+import { PageSeo } from '@components/molecules/Seo';
 
-import { useGlobalContext } from '@store/GlobalContext';
-
-import { PageSeo } from '@components/organisms/Seo';
 import './home.styles.less';
 
 interface Props {
@@ -153,7 +153,7 @@ const offer = {
 
 const Page: NextPage<Props> = ({ ctx }) => {
   const {
-    state: { currentLocale, device },
+    state: { currentLocale, device, domain },
     dispatch,
   } = useGlobalContext();
   const { t } = useTranslation();
@@ -167,7 +167,14 @@ const Page: NextPage<Props> = ({ ctx }) => {
 
   return (
     <>
-      <PageSeo title="Homepage Lux" description="Homepage description" />
+      <PageSeo
+        title="Homepage Lux"
+        description="Homepage description"
+        languageAlternates={seoManager.getlanguageAlternates(
+          domain,
+          urlManager.getPageUrls(ctx)
+        )}
+      />
       <Title>{t('hello')} - Homepage with styled-component!</Title>
       <div className="title">{t('hello')} - Homepage with Less style!</div>
       <main>Your current locale: {currentLocale}</main>

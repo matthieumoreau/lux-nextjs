@@ -14,7 +14,7 @@ import Link from '@components/atoms/Link/Link';
 
 import './offer.styles.less';
 import urlManager from '@utils/urlManager';
-import { PageSeo } from '@components/organisms/Seo';
+import { PageSeo } from '@components/molecules/Seo';
 import seoManager from '@utils/seoManager';
 
 interface Props {
@@ -34,7 +34,7 @@ const Description = styled.p`
 
 const Page: NextPage<Props> = ({ ctx, isServer }) => {
   const {
-    state: { currentLocale, device },
+    state: { currentLocale, device, domain },
     dispatch,
   } = useGlobalContext();
   const { t } = useTranslation();
@@ -72,6 +72,25 @@ const Page: NextPage<Props> = ({ ctx, isServer }) => {
         <PageSeo
           title={seoManager.getOfferTitle(data.offer, currentLocale)}
           description={data.offer.description[currentLocale]}
+          languageAlternates={seoManager.getlanguageAlternates(
+            domain,
+            urlManager.getPageUrls(ctx, data.offer)
+          )}
+          jsonLd={[
+            {
+              '@context': 'https://schema.org/',
+              '@type': 'Offer',
+              name: seoManager.getOfferTitle(data.offer, currentLocale),
+              priceCurrency: data.offer.price.Currency,
+              price: data.offer.price.raw,
+            },
+            {
+              '@context': 'https://schema.org/',
+              '@type': 'ApartmentComplex',
+              name: t(data.offer.propertyType.translationKey),
+              description: data.offer.description[currentLocale],
+            },
+          ]}
         />
       )}
 
