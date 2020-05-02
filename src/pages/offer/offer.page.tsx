@@ -4,18 +4,20 @@ import { NextPage, NextPageContext } from 'next';
 import { useQuery } from '@apollo/react-hooks';
 import styled from 'styled-components';
 
-import Error from '@pages/_error.page';
-import withApollo from '../../hoc/withApollo';
-import { useGlobalContext } from '@store/GlobalContext';
 import { useTranslation, i18n } from '@i18n';
+import { useGlobalContext } from '@store/GlobalContext';
 
+import withApollo from '../../hoc/withApollo';
 import OFFER_QUERY from './offer.query';
+
+import urlManager from '@utils/urlManager';
+import seoManager from '@utils/seoManager';
+
 import Link from '@components/atoms/Link/Link';
+import { PageSeo } from '@components/molecules/Seo';
+import Error from '@pages/_error.page';
 
 import './offer.styles.less';
-import urlManager from '@utils/urlManager';
-import { PageSeo } from '@components/molecules/Seo';
-import seoManager from '@utils/seoManager';
 
 interface Props {
   isServer: Boolean;
