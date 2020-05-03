@@ -140,12 +140,36 @@ const offer = {
   locality: {
     locality0: {
       name: "PROVENCE ALPES COTE D'AZUR",
+      names: {
+        fr: "PROVENCE ALPES COTE D'AZUR",
+        en: "PROVENCE ALPES COTE D'AZUR",
+        it: "PROVENCE ALPES COTE D'AZUR",
+        de: "PROVENCE ALPES COTE D'AZUR",
+        nl: "PROVENCE ALPES COTE D'AZUR",
+        ru: 'Прованс Альпы Лазурный Берег',
+      },
     },
     locality1: {
       name: 'BOUCHES DU RHONE',
+      names: {
+        fr: 'BOUCHES DU RHONE',
+        en: 'BOUCHES DU RHONE',
+        it: 'BOUCHES DU RHONE',
+        de: 'BOUCHES DU RHONE',
+        nl: 'BOUCHES DU RHONE',
+        ru: 'Буш-Дю-Рон',
+      },
     },
     locality2: {
       name: 'CASSIS',
+      names: {
+        fr: 'CASSIS',
+        en: 'CASSIS',
+        it: 'CASSIS',
+        de: 'CASSIS',
+        nl: 'CASSIS',
+        ru: 'Кассис',
+      },
       zip: 13260,
     },
   },

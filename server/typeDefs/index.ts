@@ -183,6 +183,7 @@ const typeDefs = gql`
     parentId: Int
     level: Int
     name: String
+    names: JSONObject
     zip: Int
     latitude: Float
     longitude: Float

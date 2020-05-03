@@ -23,13 +23,16 @@ const OFFER_QUERY = gql`
       locality: Address {
         locality0: Locality0 {
           name
+          names
           country
         }
         locality1: Locality1 {
           name
+          names
         }
         locality2: Locality2 {
           name
+          names
           zip
         }
       }

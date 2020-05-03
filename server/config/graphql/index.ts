@@ -1,6 +1,6 @@
-import typeDefs from './typeDefs';
-import resolvers from './resolvers';
-import dataSources from './dataSources';
+import typeDefs from '../../typeDefs';
+import resolvers from '../../resolvers';
+import dataSources from '../../dataSources';
 
 const apolloConfig = {
   typeDefs,

@@ -22,7 +22,7 @@ const createIsomorphLink = () => {
   if (typeof window === 'undefined') {
     const { SchemaLink } = require('apollo-link-schema');
 
-    const dataSources = require('@config/graphql/dataSources').default;
+    const dataSources = require('@server/dataSources').default;
     const schema = require('@config/graphql/schema').default;
 
     const schemaLink = new SchemaLink({

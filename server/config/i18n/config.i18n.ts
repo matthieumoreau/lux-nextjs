@@ -14,7 +14,7 @@ export const common: InitConfig = {
   fallbackLng: defaultLanguage,
   load: 'languageOnly',
   lowerCaseLng: true,
-  ns: ['common'],
+  ns: ['common', 'locality'],
   defaultNS: 'common',
   whitelist: [...languages],
   preload: [...languages],

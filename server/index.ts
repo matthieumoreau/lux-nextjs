@@ -8,7 +8,7 @@ import nextI18next from './config/i18n';
 
 import router from './routes';
 import nextApp from './next';
-import apolloConfig from './../config/graphql';
+import apolloConfig from './config/graphql';
 
 const port = parseInt(process.env.PORT || '3000', 10);
 const handle = nextApp.getRequestHandler();

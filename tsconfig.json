@@ -22,7 +22,8 @@
       "@pages/*": ["src/pages/*"],
       "@store/*": ["src/store/*"],
       "@utils/*": ["utils/*"],
-      "@config/*": ["config/*"]
+      "@config/*": ["config/*"],
+      "@server/*": ["server/*"]
     }
   },
   "exclude": ["node_modules", ".build", ".next", "server"],
