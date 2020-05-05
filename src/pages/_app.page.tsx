@@ -59,7 +59,6 @@ MyApp.getInitialProps = async appContext => {
 
   return {
     ...appProps,
-
     locale: req ? req.language : i18n.language,
     device: req
       ? deviceManager(req.headers['user-agent'] || req.headers['User-Agent'])
