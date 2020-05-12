@@ -16,6 +16,8 @@ import {
 export default async (_source, { id }, { dataSources }) => {
   const data = await dataSources.bellesDemeuresEndPoint.getOffer(id);
 
+  if (!data) return null;
+
   const mapper = new SwaggerMapper(swaggerDataMapping);
   let offer: any = mapper.map(data.data);
 
