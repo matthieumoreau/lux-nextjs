@@ -7,7 +7,7 @@ const logger: Interceptor = {
       return res;
     },
     onRejected: err => {
-      // console.log(err);
+      console.log(err);
       return err;
     },
   },

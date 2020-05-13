@@ -1,4 +1,4 @@
-import { stringify } from 'query-string';
+import { stringify } from 'querystring';
 import { ApolloError } from 'apollo-server-express';
 import { Interceptor } from '@ovotech/apollo-datasource-axios';
 
