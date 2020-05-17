@@ -1,0 +1,13 @@
+# import Offer from "offer.graphql"
+# import Contact from "contact.graphql"
+
+scalar JSON
+scalar JSONObject
+
+type Query {
+  offer(id: String!): Offer
+}
+
+type Mutation {
+  sendMessage(input: ContactInput): Contact
+}

@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 const OFFER_QUERY = gql`
-  query($id: String!) {
+  query offer ($id: String!) {
     offer(id: $id) {
       offerId: AdId
       refId: AdRef

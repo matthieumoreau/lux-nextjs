@@ -1,0 +1,25 @@
+overwrite: true
+schema: './server/typeDefs/schema.graphql'
+documents: 'src/**/*.{query,mutation}.{ts,tsx}'
+generates:
+  ./interfaces/graphql.d.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-graphql-files-modules'
+      - 'typescript-document-nodes'
+    config:
+      noExport: true
+      enumsAsTypes: true
+  ./src/hoc/withApollo/graphql.tsx:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-apollo'
+    config:
+      withComponent: false
+      withHOC: false
+      withHooks: true
+      withMutationFn: true
+  # ./server/config/graphql/graphql.schema.json:
+  #   plugins:
+  #     - 'introspection'

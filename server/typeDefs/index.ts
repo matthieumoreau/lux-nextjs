@@ -1,18 +1,3 @@
-import { gql } from 'apollo-server-express';
-
-import offer from './offer';
-import contact from './contact';
-
-const root = gql`
-  scalar JSON
-  scalar JSONObject
-
-  type Query {
-    root: String
-  }
-  type Mutation {
-    root: String
-  }
-`;
-
-export default [root, offer, contact];
+import { importSchema } from 'graphql-import'
+import path from 'path';
+export default importSchema(path.join(__dirname, 'schema.graphql'));
