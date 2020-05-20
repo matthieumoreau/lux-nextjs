@@ -1,14 +1,12 @@
 import React from 'react';
 import { NextPage, NextPageContext } from 'next';
 
-import { useQuery } from '@apollo/react-hooks';
 import styled from 'styled-components';
 
 import { useTranslation, i18n } from '@i18n';
 import { useGlobalContext } from '@store/GlobalContext';
-
-import withApollo from '../../hoc/withApollo';
-import OFFER_QUERY from './offer.query';
+import { useOfferQuery } from '@lib/graphql/useGeneratedQueries';
+import { withApollo } from '@lib/graphql';
 
 import urlManager from '@utils/urlManager';
 import seoManager from '@utils/seoManager';
@@ -40,7 +38,7 @@ const Page: NextPage<Props> = ({ ctx, isServer }) => {
     dispatch,
   } = useGlobalContext();
   const { t } = useTranslation();
-  const { data, loading, error } = useQuery(OFFER_QUERY, {
+  const { data, loading, error } = useOfferQuery({
     variables: { id: ctx.query.offerId },
     onCompleted: data => {
       // = useEffect
@@ -83,7 +81,7 @@ const Page: NextPage<Props> = ({ ctx, isServer }) => {
               '@context': 'https://schema.org/',
               '@type': 'Offer',
               name: seoManager.getOfferTitle(data.offer, currentLocale),
-              priceCurrency: data.offer.price.Currency,
+              priceCurrency: data.offer.price.currency,
               price: data.offer.price.raw,
             },
             {

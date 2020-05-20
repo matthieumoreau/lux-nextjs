@@ -14,12 +14,14 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "baseUrl": ".",
+    "typeRoots": ["./node_modules/@types", "./interfaces"],
     "paths": {
       "@tests/*": ["tests/*"],
       "@interfaces/*": ["interfaces/*"],
       "@i18n": ["server/config/i18n/index.ts"],
       "@components/*": ["src/components/*"],
       "@pages/*": ["src/pages/*"],
+      "@lib/*": ["src/lib/*"],
       "@store/*": ["src/store/*"],
       "@utils/*": ["utils/*"],
       "@config/*": ["config/*"],
@@ -27,5 +29,6 @@
     }
   },
   "exclude": ["node_modules", ".build", ".next", "server"],
+  "files": ["./interfaces/graphql.d.ts", "./interfaces/generatedGraphql.d.ts"],
   "include": ["next-env.d.ts", "interfaces/*.d.ts", "**/*.ts", "**/*.tsx"]
 }

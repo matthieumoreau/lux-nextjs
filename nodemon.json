@@ -1,7 +1,11 @@
 {
   "restartable": "rs",
   "verbose": true,
-  "exec": "ts-node --project tsconfig.server.json server/index.ts",
-  "watch": ["config", "server", "public"],
+  "exec": "rm -rf ./node_modules/.cache/babel-loader && ts-node --project tsconfig.server.json server/index.ts",
+  "watch": [
+    "config",
+    "server",
+    "public"
+  ],
   "ext": "js,ts"
 }

@@ -1,4 +1,4 @@
-import { i18n } from './../config/i18n';
+import { i18n } from '../config/i18n';
 
 export const translateLocality = address => {
   Object.values(address).map((locality: any) => {

@@ -1,0 +1,8 @@
+mutation contactOffer($input: ContactInput) {
+  sendMessage(input: $input) {
+    success
+    message
+    copy
+    send
+  }
+}

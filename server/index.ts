@@ -32,15 +32,16 @@ const handle = nextApp.getRequestHandler();
 
     console.log(
       `⏩ Next server ready at ${
-        process.env.NODE_ENV === 'development' && port
-          ? `http://localhost:${port}`
-          : process.env.APP_HOSTNAME
+      process.env.NODE_ENV === 'development' && port
+        ? `http://localhost:${port}`
+        : process.env.APP_HOSTNAME
       }`
     );
-
-    console.log(
-      `🚀 Apollo server ready at http://localhost:${port}${server.graphqlPath}`
-    );
+    if (process.env.NODE_ENV !== 'production') {
+      console.log(
+        `🚀 Apollo server ready at http://localhost:${port}${server.graphqlPath}`
+      );
+    }
   } catch (err) {
     console.error(err);
   }

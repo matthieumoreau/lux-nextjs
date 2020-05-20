@@ -1,8 +1,11 @@
 overwrite: true
-schema: './server/typeDefs/schema.graphql'
-documents: 'src/**/*.{query,mutation}.{ts,tsx}'
+schema: './server/typeDefs/root.graphql'
+documents: 'src/**/*.{query,mutation}.graphql'
 generates:
-  ./interfaces/graphql.d.ts:
+  ./server/typeDefs/schema.graphql:
+    plugins:
+      - schema-ast
+  ./interfaces/generatedGraphql.d.ts:
     plugins:
       - 'typescript'
       - 'typescript-graphql-files-modules'
@@ -10,7 +13,7 @@ generates:
     config:
       noExport: true
       enumsAsTypes: true
-  ./src/hoc/withApollo/graphql.tsx:
+  ./src/lib/graphql/useGeneratedQueries.tsx:
     plugins:
       - 'typescript'
       - 'typescript-operations'

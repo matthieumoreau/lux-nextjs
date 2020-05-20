@@ -304,7 +304,7 @@ export type OfferQuery = (
       & { order: Photo['Order'], type: Photo['Type'], url: Photo['Url'] }
     )>>>, price?: Maybe<(
       { __typename?: 'Price' }
-      & { raw: Price['Raw'] }
+      & { raw: Price['Raw'], currency: Price['Currency'] }
     )>, properties?: Maybe<(
       { __typename?: 'Properties' }
       & { buildYear: Properties['BuildYear'], fees: Properties['Fees'], floor: Properties['Floor'], hasAirConditioned: Properties['HasAirConditioned'], isTiledFloor: Properties['IsTiledFloor'], hasAlarm: Properties['HasAlarm'], hasBasement: Properties['HasBasement'], hasCableTv: Properties['HasCableTv'], hasCaretaker: Properties['HasCaretaker'], hasCellar: Properties['HasCellar'], hasChimney: Properties['HasChimney'], hasCondominiumSyndicate: Properties['HasCondominiumSyndicate'], hasEntryCode: Properties['HasEntryCode'], hasHandicapAccessibility: Properties['HasHandicapAccessibility'], hasIntercom: Properties['HasIntercom'], hasLift: Properties['HasLift'], hasParquet: Properties['HasParquet'], hasPool: Properties['HasPool'], hasSyndicatProcedure: Properties['HasSyndicatProcedure'], isHighlighed: Properties['IsHighlighed'], isBuildable: Properties['IsBuildable'], isCalm: Properties['IsCalm'], isDuplex: Properties['IsDuplex'], isFurnished: Properties['IsFurnished'], isIsmh: Properties['IsIsmh'], isRenovated: Properties['IsRenovated'], isRecent: Properties['IsRecent'], isToRenovate: Properties['IsToRenovate'], environmentId: Properties['EnvironmentId'], kitchenTypeId: Properties['KitchenTypeId'], nbrBathRoom: Properties['NbrBathRoom'], nbrBedroom: Properties['NbrBedroom'], nbrBoxes: Properties['NbrBoxes'], nbrParking: Properties['NbrParking'], nbrRoom: Properties['NbrRoom'], nbrShowerRoom: Properties['NbrShowerRoom'], nbrToilets: Properties['NbrToilets'], nbrTennisFields: Properties['NbrTennisFields'], area: Properties['Area'], plotArea: Properties['PlotArea'], livingRoomArea: Properties['LivingRoomArea'], livingArea: Properties['LivingArea'], syndicatProcedureDescription: Properties['SyndicatProcedureDescription'], hasTennisField: Properties['HasTennisField'], isSunny: Properties['IsSunny'], exposure: Properties['Exposure'], isHighlighted: Properties['IsHighlighted'], typeYatch: Properties['TypeYatch'], nbrPassengers: Properties['NbrPassengers'], size: Properties['Size'] }
@@ -400,6 +400,7 @@ export const OfferDocument = gql`
     }
     price: Price {
       raw: Raw
+      currency: Currency
     }
     properties: Properties {
       buildYear: BuildYear

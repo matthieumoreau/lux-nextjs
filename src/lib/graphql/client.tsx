@@ -1,5 +1,6 @@
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import { makeExecutableSchema } from 'graphql-tools';
 import fetch from 'isomorphic-unfetch';
 
 /**
@@ -21,9 +22,14 @@ export default (initialState = {}) => {
 const createIsomorphLink = () => {
   if (typeof window === 'undefined') {
     const { SchemaLink } = require('apollo-link-schema');
-
     const dataSources = require('@server/dataSources').default;
-    const schema = require('@server/config/graphql/schema').default;
+    const resolvers = require('@server/resolvers').default;
+    const typeDefs = require('@server/typeDefs/schema.graphql');
+
+    const schema = makeExecutableSchema({
+      typeDefs,
+      resolvers,
+    });
 
     const schemaLink = new SchemaLink({
       schema,
