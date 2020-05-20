@@ -6,7 +6,7 @@ import deviceManager from '@utils/deviceManager';
 import urlManager from '@utils/urlManager';
 import GlobalContextProvider from '@store/GlobalContext';
 
-import Layout from '@components/templates/Layout/Layout';
+import Layout from 'src/layouts/MainLayout';
 
 function MyApp({ Component, pageProps, router, device, locale, isServer }) {
   let ctx = {
