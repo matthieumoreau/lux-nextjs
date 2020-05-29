@@ -7,9 +7,6 @@ import {
 } from 'react';
 
 import isEqual from 'lodash/isequal';
-import xorWith from 'lodash/xorWith';
-import isEmpty from 'lodash/isEmpty';
-import flow from 'lodash/flow';
 
 import { ParsedUrlQuery } from 'querystring';
 import { i18n } from '@i18n';

@@ -222,12 +222,12 @@ const Page: NextPage<Props> = ({ ctx }) => {
           BAD FORMAT INTERNAL LINK BUT SP NOT WORKS ! - Homepage PT --> 404
         </Link>
       </div>
-      <div>
+      {/* <div>
         <Link href="/en/sale/property/PROVENCE-ALPES-COTE-D'AZUR/13/CASSIS/2642937C-F6F0-C424-D1DC-F9F8297BAEF3">
           BAD FORMAT INTERNAL LINK BUT SP WORKS (AUTO PATHNAME RESOLVER) ! -
           OFFER EN
         </Link>
-      </div>
+      </div> */}
       <div>
         <Link href="/en/sale/lol/PROVENCE-ALPES-COTE-D'AZUR/13/CASSIS/2642937C-F6F0-C424-D1DC-F9F8297BAEF3">
           BAD FORMAT INTERNAL LINK BUT SP NOT WORKS ! - OFFER EN--> 404
