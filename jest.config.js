@@ -15,6 +15,7 @@ module.exports = {
 
   testEnvironment: 'node',
   preset: 'ts-jest',
+  setupFiles: ['dotenv/config'],
   setupFilesAfterEnv: ['<rootDir>/tests/unit/setup.ts'],
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
@@ -29,6 +30,9 @@ module.exports = {
     '^@store/(.*)$': resolve(__dirname, './src/store/$1'),
     '^@utils/(.*)$': resolve(__dirname, './utils/$1'),
     '^@config/(.*)$': resolve(__dirname, './config/$1'),
+    '^@lib/(.*)$': resolve(__dirname, './lib/$1'),
+    '^@pages/(.*)$': resolve(__dirname, './pages/$1'),
+    '^@server/(.*)$': resolve(__dirname, './server/$1'),
   },
   testPathIgnorePatterns: [
     '<rootDir>/.next/',

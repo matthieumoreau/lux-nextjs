@@ -2,6 +2,7 @@ import React from 'react';
 import Renderer, { ReactTestRendererJSON } from 'react-test-renderer';
 
 import {
+  mockOffer,
   mockNextUseRouter,
   mockUseGlobalContext,
 } from './../../../../tests/mocks';
@@ -19,18 +20,37 @@ beforeEach(() => {
 
   // Mocks Global context
   mockUseGlobalContext({
-    currentLocale: 'fr',
-    locales: ['fr', 'en', 'it', 'de', 'nl', 'ru'],
-    device: 'desktop',
-    domain: 'http://localhost:3000/',
-    ctx: { query: {}, pathname: '/' },
+    state: {
+      currentLocale: 'fr',
+      locales: ['fr', 'en', 'it', 'de', 'nl', 'ru'],
+      device: 'desktop',
+      domain: 'http://localhost:3000/',
+      ctx: { query: {}, pathname: '/' },
+      urls: [],
+    },
   });
 });
 
 describe('<Link /> rendering', () => {
-  it('renders correctly', () => {
+  it('renders correctly offer link', () => {
     const tree: ReactTestRendererJSON = Renderer.create(
-      <Link href="https://www.google.com/" />
+      <Link href="/offer/offer" data={mockOffer}>
+        Annonce
+      </Link>
+    ).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders correctly IT page without data', () => {
+    const tree: ReactTestRendererJSON = Renderer.create(
+      <Link href="/it"> Homepage IT</Link>
+    ).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders correctly external website', () => {
+    const tree: ReactTestRendererJSON = Renderer.create(
+      <Link href="https://www.google.fr/">Google</Link>
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });

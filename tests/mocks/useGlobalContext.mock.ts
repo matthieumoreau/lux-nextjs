@@ -1,22 +1,24 @@
-export const toto = () => 'toto';
-// import * as GlobalContext from '@store/GlobalContext';
+import * as GlobalContext from '@store/GlobalContext';
 
-// // Mocks useGlobalContext
-// const useGlobalContext = jest.spyOn(GlobalContext, 'useGlobalContext');
+// Mocks useGlobalContext
+const useGlobalContext = jest.spyOn(GlobalContext, 'useGlobalContext');
 
-// /**
-//  * mockUseGlobalContext"
-//  * Mocks the useGlobalContext React hook
-//  */
+/**
+ * mockUseGlobalContext"
+ * Mocks the useGlobalContext React hook
+ */
 
-// const mockUseGlobalContext = (props: GlobalContext.GlobalContextState) => {
-//   useGlobalContext.mockImplementation(() => ({
-//     currentLocale: props.currentLocale,
-//     locales: props.locales,
-//     device: props.device,
-//     domain: props.domain,
-//     ctx: props.ctx,
-//   }));
-// };
+const mockUseGlobalContext = ({ state, dispatch }: GlobalContext.GlobalContext) => {
+    useGlobalContext.mockImplementation(() => ({
+        state: {
+            currentLocale: state.currentLocale,
+            locales: state.locales,
+            device: state.device,
+            domain: state.domain,
+            ctx: state.ctx,
+            urls: state.urls,
+        }
+    }));
+};
 
-// export default mockUseGlobalContext;
+export default mockUseGlobalContext;

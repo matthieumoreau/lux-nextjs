@@ -4,12 +4,16 @@
     "jsx": "react",
     "baseUrl": ".",
     "paths": {
+      "@tests/*": ["tests/*"],
       "@interfaces/*": ["interfaces/*"],
       "@i18n": ["server/config/i18n/index.ts"],
       "@components/*": ["src/components/*"],
+      "@pages/*": ["src/pages/*"],
+      "@lib/*": ["src/lib/*"],
       "@store/*": ["src/store/*"],
       "@utils/*": ["utils/*"],
-      "@config/*": ["config/*"]
+      "@config/*": ["config/*"],
+      "@server/*": ["server/*"]
     }
   }
 }

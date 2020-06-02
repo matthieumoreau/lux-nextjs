@@ -1,10 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Link /> rendering renders correctly 1`] = `
+exports[`<Link /> rendering renders correctly IT page without data 1`] = `
 <a
-  className="sc-AxjAm StDqN"
-  href="https://www.google.com/"
+  href="/it"
   onClick={[Function]}
+  onMouseEnter={[Function]}
+  target="_self"
+>
+   Homepage IT
+</a>
+`;
+
+exports[`<Link /> rendering renders correctly external website 1`] = `
+<a
+  className="sc-bdVaJa bDWFJH"
+  href="https://www.google.fr/"
   target="_blank"
-/>
+>
+  Google
+</a>
+`;
+
+exports[`<Link /> rendering renders correctly offer link 1`] = `
+<a
+  href="/fr/transactiontype.sale.slug/propertytype.house.slug/provence-alpes-cote-d-azur/13/cassis/2642937C-F6F0-C424-D1DC-F9F8297BAEF3"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  target="_self"
+>
+  Annonce
+</a>
 `;

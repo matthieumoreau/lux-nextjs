@@ -1,4 +1,5 @@
-// import mockUseGlobalContext from './useGlobalContext.mock';
+import mockUseGlobalContext from './useGlobalContext.mock';
 import mockNextUseRouter from './useRouter.mock';
+import mockOffer from './offer.mock'
 
-export { mockNextUseRouter };
+export { mockUseGlobalContext, mockNextUseRouter, mockOffer };
