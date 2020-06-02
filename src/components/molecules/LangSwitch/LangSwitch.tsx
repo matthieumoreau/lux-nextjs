@@ -13,12 +13,11 @@ const LangSwitch: React.FunctionComponent = () => {
   const router = useRouter();
   const {
     state: { ctx, currentLocale, urls },
-    dispatch,
   } = useGlobalContext();
 
   const handleClick = (e, locale) => {
     e.preventDefault();
-    if (ctx.pathname === '/_error') {
+    if (ctx.pathname === '/_error' || ctx.pathname === '/404') {
       return window.location.replace(`/${locale}`);
     }
     return i18n.changeLanguage(locale).then(() => {
@@ -32,7 +31,7 @@ const LangSwitch: React.FunctionComponent = () => {
 
   return (
     <>
-      {process.env.LOCALES.split(',').map((locale, index) => (
+      {process.env.NEXT_PUBLIC_LOCALES.split(',').map((locale, index) => (
         <Button
           key={index}
           onClick={e => handleClick(e, locale)}

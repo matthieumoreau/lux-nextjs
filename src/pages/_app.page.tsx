@@ -21,9 +21,9 @@ function MyApp({ Component, pageProps, router, device, locale, isServer }) {
       <GlobalContextProvider
         value={{
           currentLocale: i18n.language || locale,
-          locales: process.env.LOCALES.split(','),
+          locales: process.env.NEXT_PUBLIC_LOCALES.split(','),
           device,
-          domain: process.env.DOMAIN,
+          domain: process.env.NEXT_PUBLIC_DOMAIN,
           ctx,
           urls: urlManager.getPageUrls(ctx),
         }}>
@@ -34,6 +34,12 @@ function MyApp({ Component, pageProps, router, device, locale, isServer }) {
     </>
   );
 }
+
+// // Will be called once for every metric that has to be reported.
+// export function reportWebVitals(metric) {
+//   // These metrics can be sent to any analytics service
+//   console.log(metric);
+// }
 
 // Only uncomment this method if you have blocking data requirements for
 // every single page in your application. This disables the ability to
@@ -47,7 +53,7 @@ MyApp.getInitialProps = async appContext => {
   const cookies = cookieManager.getAll(ctx);
   const localeFromPath = req
     ? req.originalUrl.match(
-        '/(' + process.env.LOCALES.replace(/,/g, '|') + ')(/|$)'
+        '/(' + process.env.NEXT_PUBLIC_LOCALES.replace(/,/g, '|') + ')(/|$)'
       )
     : null;
 

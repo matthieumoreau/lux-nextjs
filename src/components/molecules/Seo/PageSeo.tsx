@@ -19,9 +19,6 @@ const PageSeo = ({
   languageAlternates,
   jsonLd = [],
 }: PageSeoProps) => {
-  const {
-    state: { ctx, domain, urls },
-  } = useGlobalContext();
   return (
     <Head>
       {seoManager.buildTags({

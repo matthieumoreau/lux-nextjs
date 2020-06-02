@@ -1,4 +1,4 @@
-const locales = process.env.LOCALES.replace(/,/g, '|');
+const locales = process.env.NEXT_PUBLIC_LOCALES.replace(/,/g, '|');
 
 const routes = {
   home: {

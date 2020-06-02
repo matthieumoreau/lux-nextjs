@@ -219,7 +219,7 @@ const Page: NextPage<Props> = ({ ctx }) => {
       </div>
       <div>
         <Link href="/pt">
-          BAD FORMAT INTERNAL LINK BUT SP NOT WORKS ! - Homepage PT --> 404
+          BAD FORMAT INTERNAL LINK BUT SP NOT WORKS ! - Homepage PT = 404
         </Link>
       </div>
       {/* <div>
@@ -230,7 +230,7 @@ const Page: NextPage<Props> = ({ ctx }) => {
       </div> */}
       <div>
         <Link href="/en/sale/lol/PROVENCE-ALPES-COTE-D'AZUR/13/CASSIS/2642937C-F6F0-C424-D1DC-F9F8297BAEF3">
-          BAD FORMAT INTERNAL LINK BUT SP NOT WORKS ! - OFFER EN--> 404
+          BAD FORMAT INTERNAL LINK BUT SP NOT WORKS ! - OFFER EN = 404
         </Link>
       </div>
     </>

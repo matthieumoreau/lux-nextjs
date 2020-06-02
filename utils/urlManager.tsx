@@ -2,7 +2,7 @@ import { pathToRegexp, compile } from 'path-to-regexp';
 import routes from '@config/routes';
 import { i18n } from '@i18n';
 
-const locales = process.env.LOCALES;
+const locales = process.env.NEXT_PUBLIC_LOCALES;
 
 const urlManager = {
   getPageUrls: (ctx, data = null) => {
@@ -72,7 +72,6 @@ const urlManager = {
     return null;
   },
 
-  
   getHomePageUrl: (ctx, locale) => {
     return urlManager.generateUrl(ctx.path, {
       locale,

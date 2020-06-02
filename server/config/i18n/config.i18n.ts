@@ -1,8 +1,8 @@
 import path from 'path';
 import { InitConfig } from 'next-i18next';
 
-export const languages = process.env.LOCALES
-  ? process.env.LOCALES.split(',')
+export const languages = process.env.NEXT_PUBLIC_LOCALES
+  ? process.env.NEXT_PUBLIC_LOCALES.split(',')
   : ['fr', 'en', 'it', 'de', 'nl', 'ru'];
 
 let defaultLanguage, otherLanguages;
@@ -18,7 +18,7 @@ export const common: InitConfig = {
   defaultNS: 'common',
   whitelist: [...languages],
   preload: [...languages],
-  // strictMode: false,
+  strictMode: false, // remove warning
   shallowRender: true,
   browserLanguageDetection: false,
   serverLanguageDetection: true,
