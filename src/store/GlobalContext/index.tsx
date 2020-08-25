@@ -6,7 +6,7 @@ import React, {
   useState,
 } from 'react';
 
-import isEqual from 'lodash/isequal';
+import isEqual from 'lodash.isequal';
 
 import { ParsedUrlQuery } from 'querystring';
 import { i18n } from '@i18n';

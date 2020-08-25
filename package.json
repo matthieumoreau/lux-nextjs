@@ -36,7 +36,7 @@
     "isomorphic-unfetch": "^3.0.0",
     "less": "^3.11.1",
     "locale": "^0.1.0",
-    "lodash": "^4.17.20",
+    "lodash.isequal": "^4.5.0",
     "md5": "^2.2.1",
     "mobile-detect": "^1.4.4",
     "module-alias": "^2.2.2",
